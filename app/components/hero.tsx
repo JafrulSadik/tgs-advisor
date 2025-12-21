@@ -5,9 +5,9 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="relative grid grid-cols-12 lg:min-h-[790px]">
+    <div className="relative grid grid-cols-12 lg:min-h-[720px]">
       <div className="order-2 lg:order-1 col-span-12 lg:col-span-8 flex flex-col items-center justify-center bg-blue py-20 lg:py-0 lg:pb-0">
-        <div className="text-4xl lg:text-6xl font-bold leading-[103%]">
+        <div className="text-4xl lg:text-5xl font-bold leading-[103%]">
           <h1 className="text-center text-white">TGS</h1>
           <h1 className="text-center text-yellow">ADVISOR</h1>
         </div>

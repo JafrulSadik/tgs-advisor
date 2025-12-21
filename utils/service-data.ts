@@ -5,6 +5,7 @@ export type ServiceData = {
   points: string[];
   outcome: string;
   button: string;
+  tag: string;
 };
 
 export const serviceData: ServiceData[] = [
@@ -24,6 +25,7 @@ export const serviceData: ServiceData[] = [
     outcome:
       "Higher output, reduced loss, and consistent performance improvement.",
     button: "Request Advisory Session",
+    tag: "production-efficiency-development",
   },
   {
     title: "Cost Reduction & Profit Improvement",
@@ -39,6 +41,7 @@ export const serviceData: ServiceData[] = [
     ],
     outcome: "Lower cost per unit and stronger profit margins.",
     button: "Request Advisory Session",
+    tag: "cost-reduction-profit-maximization",
   },
   {
     title: "Skill & Motivation Training",
@@ -54,6 +57,7 @@ export const serviceData: ServiceData[] = [
     outcome:
       "Skilled, motivated teams delivering higher consistency and accountability.",
     button: "Request Advisory Session",
+    tag: "skill-motivation-training",
   },
   {
     title: "Fabric & Material Control",
@@ -69,6 +73,7 @@ export const serviceData: ServiceData[] = [
     outcome:
       "Reduced fabric loss, efficient utilization, and improved cost control.",
     button: "Request Advisory Session",
+    tag: "fabric-material-control",
   },
   {
     title: "Factory System Setup & Restructuring",
@@ -85,9 +90,10 @@ export const serviceData: ServiceData[] = [
     outcome:
       "A streamlined factory structure with stronger accountability and reduced operational friction.",
     button: "Request Advisory Session",
+    tag: "factory-system-setup-restructuring",
   },
   {
-    title: "HR & Compliance Development",
+    title: "Compliance & HR KPI Development",
     description:
       "We build modern HR systems and compliance structures aligned with labor law and buyer requirements.",
     pointsTitle: "Key Focus Areas",
@@ -101,5 +107,6 @@ export const serviceData: ServiceData[] = [
     outcome:
       "Skilled, motivated teams delivering higher consistency and accountability.",
     button: "Request Advisory Session",
+    tag: "hr-compliance-development",
   },
 ];

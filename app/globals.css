@@ -32,6 +32,10 @@
   --container-2xl: 1536px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

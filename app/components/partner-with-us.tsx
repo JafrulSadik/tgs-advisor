@@ -9,8 +9,8 @@ export default function PartnerWithUs() {
         </p>
       </div>
 
-      <div className="py-4 px-12 bg-blue rounded-3xl w-[90%] md:w-auto mx-auto">
-        <h1 className="text-xl text-white font-semibold text-center md:text-3xl">
+      <div className="py-4 px-5 md:px-12 bg-blue rounded-[14px] md:rounded-2xl w-[90%] mb-5 md:mb-10 md:w-auto mx-auto">
+        <h1 className="text-lg text-white font-semibold text-center md:text-2xl">
           Let’s Discuss Your Challenges
         </h1>
       </div>

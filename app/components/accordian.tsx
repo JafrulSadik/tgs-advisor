@@ -22,28 +22,27 @@ driven operations, and strategic business advisory.`,
     {
       question: "Who can benefit from TGS Advisor’s consultancy?",
       answer:
-        "Yes, we arrange online meeting for all clients, allowing easy access to our team and services from any location.",
+        "Our solutions are designed for RMG factories, textile mills, manufacturing units, BPO/ITES companies, corporate HR teams, leadership groups, and business owners looking to improve efficiency, strengthen internal systems, or scale with global standards.",
     },
     {
-      question: "Do you provide on site  and off site training programs?",
+      question: "Do you provide on-site and off-site training programs?",
       answer:
-        "Yes, we arrange online meeting for all clients, allowing easy access to our team and services from any location.",
+        "Yes. TGS Advisor provides factory-floor training, management-level workshops, leadership programs, and customized skill-development sessions both on-site and virtually. Programs are tailored to a client’s operations, maturity level, and performance goals.",
     },
     {
       question: "How does TGS Advisor approach process impovement?",
-      answer:
-        "Yes, we arrange online meeting for all clients, allowing easy access to our team and services from any location.",
+      answer: `We use a data-driven, root-cause-first methodology. Our specialists assess the current workflow end to end—planning, IE, supply chain, HR, compliance, and financial structure—then redesign systems to improve efficiency, reduce waste, and unlock measurable productivity gains.`,
     },
     {
       question:
         "Can TGS Advisor help with complete organization restructuring or KPI system?",
       answer:
-        "Yes, we arrange online meeting for all clients, allowing easy access to our team and services from any location.",
+        "Absolutely. Our experts have implemented KPI frameworks, OKR systems, succession planning, HR restructuring, planning architecture, and SOP development for leading organizations. We ensure implementation is practical, scalable, and aligned with your long-term objectives.",
     },
     {
       question: "How can I get started with TGS Advisor?",
       answer:
-        "Yes, we arrange online meeting for all clients, allowing easy access to our team and services from any location.",
+        "You can contact us through our website’s inquiry form or email. We begin with a short consultation to understand your challenges, goals, and operational context. Based on that, we propose a tailored action plan, timeline, and engagement model that fits your requirements.",
     },
   ];
 

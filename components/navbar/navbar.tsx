@@ -13,7 +13,36 @@ import Image from "next/image";
 const menuItems = [
   { title: "Who We Are", link: "/who-we-are" },
   { title: "Mission & Vision", link: "/our-vision-and-mission" },
-  { title: "Our Services", link: "/our-services" },
+  {
+    title: "Our Services",
+    link: "/our-services",
+    submenus: [
+      {
+        title: "Production & Efficiency Development",
+        link: "/our-services#production-efficiency-development",
+      },
+      {
+        title: "Cost Reduction & Profit Improvement",
+        link: "/our-services#cost-reduction-profit-maximization",
+      },
+      {
+        title: "Skill & Motivation Training",
+        link: "/our-services#skill-motivation-training",
+      },
+      {
+        title: "Fabric & Material Control",
+        link: "/our-services#fabric-material-control",
+      },
+      {
+        title: "Factory System Setup & Restructuring",
+        link: "/our-services#factory-system-setup-restructuring",
+      },
+      {
+        title: "Compliance & HR KPI Development",
+        link: "/our-services#hr-compliance-development",
+      },
+    ],
+  },
   { title: "Our Team", link: "/our-team" },
   { title: "Gallery", link: "/gallery" },
   { title: "Download", link: "/download" },
@@ -22,6 +51,7 @@ const menuItems = [
 export default function Navbar() {
   const { width } = useWindowSize();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -68,6 +98,32 @@ export default function Navbar() {
                 >
                   {menu.title}
                 </Link>
+
+                {menu.submenus && openMenu === menu.title && (
+                  <div className="absolute left-0 top-7 w-90 rounded-md border border-white/10 bg-white/60 text-black backdrop-blur-sm shadow-lg group-hover:block">
+                    {menu.submenus.map((submenu, index) => {
+                      const isFirst = index === 0;
+                      const isLast = index === menu.submenus.length - 1;
+                      return (
+                        <div
+                          key={submenu.title}
+                          className="relative"
+                          onMouseEnter={() => setOpenSubMenu(submenu.title)}
+                          onMouseLeave={() => setOpenSubMenu(null)}
+                        >
+                          <Link
+                            href={submenu.link}
+                            className={`hover:bg-white/30 block px-4 py-3 hover:text-black ${
+                              isFirst ? "rounded-t-md" : ""
+                            } ${isLast ? "rounded-b-md" : ""}`}
+                          >
+                            {submenu.title}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -140,6 +196,32 @@ export default function Navbar() {
                     >
                       <Link href={menu.link}>{menu.title}</Link>
                     </button>
+
+                    <AnimatePresence>
+                      {menu.submenus && openMenu === menu.title && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="ml-4 border-l border-white/20"
+                        >
+                          {menu?.submenus?.map((submenu) => (
+                            <Link
+                              href={submenu.link}
+                              onClick={() => {
+                                toggleDrawer();
+                                setOpenMenu(null);
+                              }}
+                              key={submenu.title}
+                              className="flex w-full items-start justify-between px-3 py-2 text-sm hover:bg-white/10"
+                            >
+                              {submenu.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </div>

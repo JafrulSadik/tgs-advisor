@@ -10,6 +10,17 @@ import {
   XIcon,
 } from "@/public/icons";
 import TgsAdvisorLogo from "@/public/tgs-logo.svg";
+import { serviceData } from "@/utils/service-data";
+import Link from "next/link";
+
+const footerLinks = [
+  { title: "Who We Are", href: "/who-we-are" },
+  { title: "Vision & Mission", href: "/vision-mission" },
+  { title: "Our Team", href: "/our-team" },
+  { title: "Gallery", href: "/gallery" },
+  { title: "Download", href: "/download" },
+  { title: "Contact Us", href: "/contact-us" },
+];
 
 export default function Footer() {
   return (
@@ -45,12 +56,11 @@ export default function Footer() {
             <hr className="border-2 w-full text-yellow" />
           </div>
           <ul className="space-y-2 text-sm md:text-base ">
-            <li>Who We Are</li>
-            <li>Vision & Mission</li>
-            <li>Our Team</li>
-            <li>Gallery</li>
-            <li>Download</li>
-            <li>Contact Us</li>
+            {footerLinks.map((link, i) => (
+              <li key={i}>
+                <Link href={link.href}>{link.title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -62,30 +72,17 @@ export default function Footer() {
             <hr className="border-2 w-full text-yellow" />
           </div>
           <ul className="space-y-2 text-sm md:text-base">
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Production Efficiency Development</p>
-            </li>
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Cost Reduction & Profit Maximization</p>
-            </li>
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Skill & Motivation Training</p>
-            </li>
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Fabric & Material Optimization</p>
-            </li>
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Factory System Setup & Restructuring</p>
-            </li>
-            <li className="flex gap-2 items-center">
-              <span className="size-2 bg-white rounded-full" />{" "}
-              <p>Compliance & HR KPI Development</p>
-            </li>
+            {serviceData.map((service, i) => (
+              <li key={i} className="flex gap-2 items-center">
+                <Link
+                  href={`/our-services#${service.tag}`}
+                  className="flex gap-2 items-center"
+                >
+                  <span className="size-2 bg-white rounded-full" />{" "}
+                  <p>{service.title}</p>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

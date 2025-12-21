@@ -1,2 +1,3 @@
+export { default as Appostrophi } from "./appostrophi.svg";
 export { default as CoreServicesCover } from "./core-services.svg";
 export { default as HowWeApprochCover } from "./how-we-approch-cover.svg";
