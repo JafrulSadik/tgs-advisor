@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     id: 2,
-    text: "TGS Advisor boosts employee morale with counseling, wellness programs, and performance based motivation.",
+    text: "TGS Advisor boosts employee morale with counseling, wellness programs and performance based motivation.",
     name: "Alamzeb Radin Ahmed",
     designation: "Managing Director",
     company: "Farnoor Garments Ltd",

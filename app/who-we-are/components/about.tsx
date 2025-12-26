@@ -20,9 +20,9 @@ export default function About() {
         <p className="text-sm lg:text-lg">
           We the TGS Advisors is Bangladesh’s leading garments consultancy firm,
           helping factories achieve measurable improvement in efficiency, cost
-          reduction, and sustainable management systems. Our team brings more
+          reduction and sustainable management systems. Our team brings more
           than a decade of hands on experience across production, planning, HR
-          compliance, and factory operations. We don’t just consult we implement
+          compliance and factory operations. We don’t just consult we implement
           practical systems that drive real results. Our Strengths:
         </p>
       </div>

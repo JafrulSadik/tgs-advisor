@@ -1,12 +1,10 @@
-"use client";
-
 import { serviceData } from "@/utils/service-data";
 
 export default function ServiceForm({ serviceTag }: { serviceTag: string }) {
   return (
     <form
       action=""
-      className="flex w-full justify-center  md:mt-10 md:mb-6 overflow-y-auto"
+      className="flex p-2 flex-col items-center w-full justify-center  md:mt-6 md:mb-6 overflow-y-auto"
     >
       <div className="grid w-[98%] md:w-[90%] max-w-5xl grid-cols-12 md:grid-rows-6 gap-4">
         <div className="col-span-12 lg:col-span-6 row-span-1">

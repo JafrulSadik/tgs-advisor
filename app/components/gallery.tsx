@@ -1,20 +1,19 @@
-import Image from "next/image";
-import GalleryImage from "../../public/images/homepage/gallery.png";
+import GallerySlideSection from "./gallery-slide-section";
+import MobileImageSlider from "./mobile-image-slider";
 
 export default function GallerySection() {
   return (
-    <section className="overflow-hidden relative md:pt-50 pt-30 pb-15 bg-body w-[90%] mx-auto">
+    <section className="overflow-hidden relative md:pt-40 pt-10 bg-body mx-auto">
       <div>
-        <div className="absolute  top-15 md:top-20 md:text-[8rem] lg:top-0 z-10 flex w-full select-none items-center justify-center bg-cover bg-center text-[4rem] font-bold text-gray-300 md:left-0 lg:text-[14rem]">
+        <div className="absolute md:top-15 md:text-[10rem] lg:top-0 z-10 flex w-full select-none items-center justify-center bg-cover bg-center text-[4rem] font-bold text-gray-300 md:left-0 lg:text-[14rem]">
           Gallery
         </div>
 
-        <div className="relative z-50 h-auto  w-full">
-          <Image
-            src={GalleryImage}
-            alt="cover"
-            className="object-cover h-full transition-all duration-300 md:w-full"
-          />
+        <div className="hidden md:block relative z-50 h-auto w-full">
+          <GallerySlideSection />
+        </div>
+        <div className="block md:hidden relative z-50 h-auto w-full">
+          <MobileImageSlider />
         </div>
       </div>
     </section>

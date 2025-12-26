@@ -7,15 +7,15 @@ import {
   LinkedinIcon,
   MailIcon,
   PhoneIcon,
-  XIcon,
 } from "@/public/icons";
 import TgsAdvisorLogo from "@/public/tgs-logo.svg";
 import { serviceData } from "@/utils/service-data";
 import Link from "next/link";
+import { TbBrandYoutubeFilled } from "react-icons/tb";
 
 const footerLinks = [
   { title: "Who We Are", href: "/who-we-are" },
-  { title: "Vision & Mission", href: "/vision-mission" },
+  { title: "Vision & Mission", href: "/our-vision-and-mission" },
   { title: "Our Team", href: "/our-team" },
   { title: "Gallery", href: "/gallery" },
   { title: "Download", href: "/download" },
@@ -36,9 +36,9 @@ export default function Footer() {
             <hr className="border-2 w-full text-yellow" />
           </div>
 
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-3 items-center">
             <Image className="size-6" src={FacebookIcon} alt="facebook-icon" />
-            <Image className="size-6" src={XIcon} alt="x-icon" />
+            <TbBrandYoutubeFilled className="size-7 text-[#ffffff]" />
             <Image className="size-6" src={LinkedinIcon} alt="linkedin-icon" />
             <Image
               className="size-6"
@@ -94,17 +94,34 @@ export default function Footer() {
             <hr className="border-2 w-full text-yellow" />
           </div>
           <ul className="space-y-2 mt-2 text-sm md:text-base">
-            <li className="flex gap-2 items-center">
-              <Image className="size-4" src={PhoneIcon} alt="phone-icon" />
+            <li className="flex gap-2 items-start">
+              <Image
+                className="size-4 mt-0.5 lg:mt-1"
+                src={PhoneIcon}
+                alt="phone-icon"
+              />
               <p>+8801713-262940</p>
             </li>
-            <li className="flex gap-2 items-center">
-              <Image className="size-4" src={MailIcon} alt="email-icon" />
+            <li className="flex gap-2 items-start">
+              <Image
+                className="size-4 mt-0.5 lg:mt-1"
+                src={MailIcon}
+                alt="email-icon"
+              />
+
               <p>contact@tgsadvisor.com</p>
             </li>
-            <li className="flex gap-2 items-center">
-              <Image className="size-4" src={HomeIcon} alt="location-icon" />
-              <p>House : 66 Road : 18 Sector : 11 Uttara, Dhaka, Bangladesh</p>
+            <li className="flex gap-2 items-start">
+              <Image
+                className="size-4 mt-0.5 lg:mt-1"
+                src={HomeIcon}
+                alt="location-icon"
+              />
+              <p>
+                House : 66 Road : 18 Sector : 11
+                <br />
+                Uttara, Dhaka, Bangladesh
+              </p>
             </li>
           </ul>
         </div>

@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const menuItems = [
   { title: "Who We Are", link: "/who-we-are" },
-  { title: "Mission & Vision", link: "/our-vision-and-mission" },
+  { title: "Vision & Mission", link: "/our-vision-and-mission" },
   {
     title: "Our Services",
     link: "/our-services",
@@ -49,18 +49,22 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const { width } = useWindowSize();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  // Only call useWindowSize after mount to prevent hydration mismatch
+  const { width = 0 } = useWindowSize();
+
   useEffect(() => {
-    (() => setIsMounted(true))();
+    setIsMounted(true);
   }, []);
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
-  const isMobile = isMounted ? width < 990 : false;
+
+  // Default to desktop (false) on server, then update on client after mount
+  const isMobile = isMounted && width > 0 ? width < 990 : false;
 
   return (
     <div className="absolute lg:py-4 left-0 top-2 z-50 flex w-full items-center justify-center">
@@ -132,14 +136,18 @@ export default function Navbar() {
         {/* Right Section */}
         <div className="col-span-6 md:col-span-4 flex items-center justify-end gap-2">
           <p className="text-sm text-white md:hidden">Eng</p>
-          <div className="bg-green flex items-center gap-2 rounded-full p-1 md:px-4 md:py-2.5">
+          <Link
+            target="_blank"
+            href="https://wa.me/+8801713262940"
+            className="bg-green flex items-center gap-2 rounded-full p-1 md:px-4 md:py-2.5"
+          >
             <Image
               src={WhatsappIcon}
               alt="whatsapp"
               className="size-4 md:size-5"
             />
             <p className="hidden text-base text-white md:block">WhatsApp</p>
-          </div>
+          </Link>
           <p className="hidden text-white md:block">English</p>
 
           {/* Hamburger Icon */}

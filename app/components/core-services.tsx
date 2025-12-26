@@ -2,37 +2,37 @@ import ServiceCard from "./service-card";
 
 const coreServices = [
   {
-    id: "01",
+    id: 1,
     service: "Production Efficiency Development",
     color: "#00BDF2",
     tag: "production-efficiency-development",
   },
   {
-    id: "02",
+    id: 2,
     service: "Cost Reduction & Profit Maximization",
     color: "#F68D3A",
     tag: "cost-reduction-profit-maximization",
   },
   {
-    id: "03",
+    id: 3,
     service: "Skill & Motivation Training",
     color: "#194C60",
     tag: "skill-motivation-training",
   },
   {
-    id: "04",
+    id: 4,
     service: "Fabric & Material Optimization",
     color: "#E7404C",
     tag: "fabric-material-control",
   },
   {
-    id: "05",
+    id: 5,
     service: "Factory System Setup & Restructuring",
     color: "#92C441",
     tag: "factory-system-setup-restructuring",
   },
   {
-    id: "06",
+    id: 6,
     service: "Compliance & HR KPI Development",
     color: "#7C53A2",
     tag: "hr-compliance-development",
@@ -55,7 +55,7 @@ export default function CoreServices() {
         {coreServices.map((service, i) => (
           <ServiceCard
             key={service.id}
-            number={service.id}
+            id={service.id}
             serviceText={service.service}
             align={i % 2 === 0 ? "right" : "left"}
             color={service.color}

@@ -8,35 +8,35 @@ const missionItems = [
     number: 1,
     title: "Drive Operational Excellence",
     description:
-      "Enable organizations to optimize processes, strengthen planning systems, and achieve consistent, measurable performance improvements.",
+      "Enable organizations to optimize processes, strengthen planning systems and achieve consistent, measurable performance improvements.",
     icon: Target,
   },
   {
     number: 2,
     title: "Develop People & Leadership",
     description:
-      "Build capability at every level frontline to top management through structured training, leadership programs, and modern HR development frameworks.",
+      "Build capability at every level frontline to top management through structured training, leadership programs and modern HR development frameworks.",
     icon: Users,
   },
   {
     number: 3,
     title: "Strengthen Organizational Systems",
     description:
-      "Design and implement robust structures, KPIs, SOPs, and governance mechanisms that align people, processes, and strategy for sustained impact.",
+      "Design and implement robust structures, KPIs, SOPs and governance mechanisms that align people, processes and strategy for sustained impact.",
     icon: Building2,
   },
   {
     number: 4,
     title: "Accelerate Strategic Growth",
     description:
-      "Support businesses with strategic advisory, innovation insights, and international best practices to help them scale responsibly and competitively.",
+      "Support businesses with strategic advisory, innovation insights and international best practices to help them scale responsibly and competitively.",
     icon: TrendingUp,
   },
   {
     number: 5,
     title: "Promote Ethical & Sustainable Practices",
     description:
-      "Encourage organizations to adopt responsible production, transparent systems, and long term workforce development aligned with global expectations.",
+      "Encourage organizations to adopt responsible production, transparent systems and long term workforce development aligned with global expectations.",
     icon: Leaf,
   },
 ];
@@ -56,15 +56,15 @@ export default function OurVision() {
 
             <div className="space-y-4 text-muted-foreground  text-sm md:text-base">
               <p>
-                To become the most trusted advisory partner for RMG, textile,
-                and industrial businesses across Asia — empowering organizations
-                to operate with global standards, data-driven systems, and
-                sustainable performance excellence.
+                To become the most trusted advisory partner for RMG, textile and
+                industrial businesses across Asia. Empowering organizations to
+                operate with global standards, data driven systems, sustainable
+                performance with excellence.
               </p>
               <p>
-                We aim to redefine how factories, corporates, and teams approach
-                productivity, leadership, and operational transformation —
-                driving long-term competitiveness and responsible growth.
+                We aim to redefine how factories, corporates and teams approach
+                productivity, leadership, operational transformation by driving
+                long-term competitiveness and responsible growth.
               </p>
             </div>
           </div>
@@ -131,11 +131,10 @@ export default function OurVision() {
               Our Commitment
             </h3>
             <p className="text-justify  text-sm md:text-base">
-              Our Commitment TGS Advisor is committed to delivering clear
-              solutions, practical implementation, and real improvements not
-              just recommendations. We combine field experience, global
-              exposure, and expert insight to help organizations unlock their
-              full potential.
+              TGS Advisor is committed to delivering clear solutions, practical
+              implementation and real improvements not just recommendations. We
+              combine field experience, global exposure and expert insight to
+              help organizations unlock their full potential.
             </p>
           </div>
         </div>

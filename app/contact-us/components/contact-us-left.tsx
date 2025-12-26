@@ -2,6 +2,7 @@ import { WhatsappIcon } from "@/public";
 import { PhoneIcon } from "@/public/icons";
 import { Contact } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactUsLeft() {
   return (
@@ -23,7 +24,10 @@ export default function ContactUsLeft() {
         </h3>
 
         <div className="flex items-center gap-2">
-          <div className="flex w-fit items-center gap-2 rounded-full bg-[#1ABD50] py-2 px-3 md:px-4 md:py-3  text-base">
+          <Link
+            href="https://wa.me/+8801713262940"
+            className="flex w-fit items-center gap-2 rounded-full bg-[#1ABD50] py-2 px-3 md:px-4 md:py-3 text-base"
+          >
             <Image
               src={WhatsappIcon}
               alt="Whatsapp"
@@ -32,9 +36,12 @@ export default function ContactUsLeft() {
               className=""
             />
             <span>Whatsapp</span>
-          </div>
+          </Link>
 
-          <div className="w-fit rounded-full bg-cyan p-3 md:p-4">
+          <Link
+            href="tel:+8801713262940"
+            className="w-fit rounded-full bg-cyan p-3 md:p-4"
+          >
             <Image
               src={PhoneIcon}
               alt="Phone"
@@ -42,7 +49,7 @@ export default function ContactUsLeft() {
               height={18}
               className=""
             />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

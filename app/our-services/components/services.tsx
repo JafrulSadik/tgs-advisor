@@ -7,7 +7,7 @@ export default function Services() {
       <h2 className="md:text-xl text-center max-w-[90%] lg:max-w-5xl mx-auto">
         TGS Advisor provides specialized consulting and capability development
         across different sectors, helping organizations strengthen performance,
-        control costs, develop people, and build globally aligned systems.
+        control costs, develop people and build globally aligned systems.
       </h2>
 
       <div className="flex justify-center">

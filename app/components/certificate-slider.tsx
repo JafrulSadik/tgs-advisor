@@ -43,8 +43,8 @@ export default function CertificateSlider() {
           key={certificate.id}
           src={certificate.image}
           alt="Certificate"
-          width={169}
-          height={147}
+          width={400}
+          height={700}
           objectFit="cover"
           className={`w-full px-4 rounded-md ${
             i % 2 === 0 ? " h-60 lg:h-80" : "h-52 lg:h-66"

@@ -23,7 +23,7 @@ export const serviceData: ServiceData[] = [
       "Energy, overtime & idle-time saving strategy",
     ],
     outcome:
-      "Higher output, reduced loss, and consistent performance improvement.",
+      "Higher output, reduced loss and consistent performance improvement.",
     button: "Request Advisory Session",
     tag: "production-efficiency-development",
   },
@@ -71,19 +71,19 @@ export const serviceData: ServiceData[] = [
       "Real-time fabric and trims tracking",
     ],
     outcome:
-      "Reduced fabric loss, efficient utilization, and improved cost control.",
+      "Reduced fabric loss, efficient utilization and improved cost control.",
     button: "Request Advisory Session",
     tag: "fabric-material-control",
   },
   {
     title: "Factory System Setup & Restructuring",
     description:
-      "We design and restructure factory systems to ensure clarity, discipline, and smooth operational flow.",
+      "We design and restructure factory systems to ensure clarity, discipline and smooth operational flow.",
     pointsTitle: "Core Activities",
     points: [
       "Department restructuring",
       "Workflow and communication mapping",
-      "Role, responsibility, and hierarchy alignment",
+      "Role, responsibility and hierarchy alignment",
       "Production floor system setup",
       "Cross-functional coordination framework",
     ],
