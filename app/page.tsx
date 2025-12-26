@@ -4,6 +4,7 @@ import AwardsAndCertificates from "./components/awards-and-certificates";
 import ClientFeedback from "./components/client-feedback";
 import CoreServices from "./components/core-services";
 import FaqSection from "./components/faq-section";
+import FloatingWhatsapp from "./components/floating-whatsapp";
 import GallerySection from "./components/gallery";
 import Hero from "./components/hero";
 import HowWeApproch from "./components/how-we-approch";
@@ -25,6 +26,7 @@ export default function Home() {
       <FaqSection />
       <PartnerWithUs />
       <AwardsAndCertificates />
+      <FloatingWhatsapp />
       <Footer />
     </div>
   );

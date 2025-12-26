@@ -1,5 +1,6 @@
 import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
+import FloatingWhatsapp from "../components/floating-whatsapp";
 import ContactUsHeader from "./components/header";
 import WaysToConnect from "./components/ways-to-connect";
 
@@ -9,6 +10,7 @@ export default function ContactUs() {
       <Navbar />
       <ContactUsHeader />
       <WaysToConnect />
+      <FloatingWhatsapp />
       <Footer />
     </div>
   );

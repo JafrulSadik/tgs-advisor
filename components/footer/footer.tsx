@@ -100,7 +100,7 @@ export default function Footer() {
                 src={PhoneIcon}
                 alt="phone-icon"
               />
-              <p>+8801713-262940</p>
+              <Link href="tel:+8801713262940">+8801713-262940</Link>
             </li>
             <li className="flex gap-2 items-start">
               <Image
