@@ -1,4 +1,4 @@
-import { HowWeApprochCover } from "@/public/images/homepage";
+import HowWeApprochCover from "@/public/images/homepage/how-to-approch.svg";
 import Image from "next/image";
 
 export default function HowWeApproch() {

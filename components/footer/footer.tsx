@@ -27,7 +27,9 @@ export default function Footer() {
     <div className="bg-navy">
       <div className="mx-auto max-w-6xl grid grid-cols-12 py-15 gap-5 md:gap-y-10 lg:gap-5 w-[80%] lg:w-[90%]">
         <div className="order-1 md:order-3 lg:order-1 col-span-12 md:col-span-6 lg:col-span-3">
-          <Image src={TgsAdvisorLogo} alt="tgs-advisor-logo" />
+          <Link href="/">
+            <Image src={TgsAdvisorLogo} alt="tgs-advisor-logo" />
+          </Link>
 
           <div className="w-fit mb-2 text-white mt-4">
             <h3 className="font-semibold text-base md:text-lg uppercase">
@@ -37,7 +39,17 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4 mt-3 items-center">
-            <Image className="size-6" src={FacebookIcon} alt="facebook-icon" />
+            <Link
+              href="https://www.facebook.com/share/1aNqAgFpQV"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="size-6"
+                src={FacebookIcon}
+                alt="facebook-icon"
+              />
+            </Link>
             <TbBrandYoutubeFilled className="size-7 text-[#ffffff]" />
             <Image className="size-6" src={LinkedinIcon} alt="linkedin-icon" />
             <Image

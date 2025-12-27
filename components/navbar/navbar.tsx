@@ -3,8 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useWindowSize } from "usehooks-ts";
+import { useState } from "react";
 
 import { HamburgerMenuIcon, WhatsappIcon } from "@/public";
 import Logo from "@/public/tgs-logo.svg";
@@ -52,19 +51,8 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Only call useWindowSize after mount to prevent hydration mismatch
-  const { width = 0 } = useWindowSize();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
-
-  // Default to desktop (false) on server, then update on client after mount
-  const isMobile = isMounted && width > 0 ? width < 990 : false;
 
   return (
     <div className="absolute lg:py-4 left-0 top-2 z-50 flex w-full items-center justify-center">
@@ -82,11 +70,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div
-            className={`relative flex gap-4 justify-between w-full text-white md:text-sm lg:text-base ${
-              isMobile ? "hidden" : "flex"
-            }`}
-          >
+          <div className="relative hidden min-[990px]:flex gap-4 justify-between w-full text-white md:text-sm lg:text-base">
             {menuItems.map((menu) => (
               <div
                 key={menu.title}
@@ -151,10 +135,7 @@ export default function Navbar() {
           <p className="hidden text-white md:block">English</p>
 
           {/* Hamburger Icon */}
-          <button
-            onClick={toggleDrawer}
-            className={isMobile ? "block" : "hidden"}
-          >
+          <button onClick={toggleDrawer} className="block min-[990px]:hidden">
             <Image src={HamburgerMenuIcon} alt="menu" className="size-8" />
           </button>
         </div>

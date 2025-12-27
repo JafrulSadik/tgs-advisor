@@ -1,30 +1,4 @@
-const services = [
-  {
-    id: 1,
-    name: "Process & Productivity Improvement",
-    value: "process-and-productivity-improvement",
-  },
-  {
-    id: 2,
-    name: "Quality & Compliance Audit",
-    value: "quality-and-compliance-audit",
-  },
-  {
-    id: 3,
-    name: "Factory Layout & Workflow Planning",
-    value: "factory-layout-and-workflow-planning",
-  },
-  {
-    id: 4,
-    name: "Cost Reduction & Efficiency Strategy",
-    value: "cost-reduction-and-efficiency-strategy",
-  },
-  {
-    id: 5,
-    name: "Training & Performance Development",
-    value: "training-and-performance-development",
-  },
-];
+import { serviceData } from "@/utils/service-data";
 
 export default function ConsultationForm() {
   return (
@@ -60,9 +34,9 @@ export default function ConsultationForm() {
         </div>
         <div className="col-span-12 row-span-1">
           <select className="w-full rounded-md bg-blue/20 p-3 font-normal text-gray-700 outline-none md:rounded-lg md:p-4">
-            {services.map((service) => (
-              <option key={service.id} value={service.value}>
-                {service.name}
+            {serviceData.map((service) => (
+              <option key={service.tag} value={service.tag}>
+                {service.title}
               </option>
             ))}
           </select>
