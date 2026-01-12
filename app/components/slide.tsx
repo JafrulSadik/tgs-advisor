@@ -1,7 +1,7 @@
 "use client";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const ITEM_WIDTH = 240;
 const GAP = 10;
@@ -22,7 +22,7 @@ export default function SliderItem({
 
   const [viewportWidth, setViewportWidth] = useState(DEFAULT_VIEWPORT_WIDTH);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateViewportWidth = () => {
       setViewportWidth(window.innerWidth);
     };

@@ -4,6 +4,7 @@ export type ServiceData = {
   pointsTitle: string;
   points: string[];
   outcome: string;
+  color: string;
   button: string;
   tag: string;
 };
@@ -22,6 +23,7 @@ export const serviceData: ServiceData[] = [
       "Waste identification & elimination",
       "Energy, overtime & idle-time saving strategy",
     ],
+    color: "#00BDF2",
     outcome:
       "Higher output, reduced loss and consistent performance improvement.",
     button: "Request Advisory Session",
@@ -39,6 +41,7 @@ export const serviceData: ServiceData[] = [
       "OT & idle-time control",
       "Fabric consumption efficiency",
     ],
+    color: "#F68D3A",
     outcome: "Lower cost per unit and stronger profit margins.",
     button: "Request Advisory Session",
     tag: "cost-reduction-profit-maximization",
@@ -54,6 +57,7 @@ export const serviceData: ServiceData[] = [
       "Daily motivation & engagement checklist",
       "Operator technical skill upgrading",
     ],
+    color: "#194C60",
     outcome:
       "Skilled, motivated teams delivering higher consistency and accountability.",
     button: "Request Advisory Session",
@@ -70,6 +74,7 @@ export const serviceData: ServiceData[] = [
       "Consumption variance tracking",
       "Real-time fabric and trims tracking",
     ],
+    color: "#E7404C",
     outcome:
       "Reduced fabric loss, efficient utilization and improved cost control.",
     button: "Request Advisory Session",
@@ -87,6 +92,7 @@ export const serviceData: ServiceData[] = [
       "Production floor system setup",
       "Cross-functional coordination framework",
     ],
+    color: "#92C441",
     outcome:
       "A streamlined factory structure with stronger accountability and reduced operational friction.",
     button: "Request Advisory Session",
@@ -104,6 +110,7 @@ export const serviceData: ServiceData[] = [
       "Diagnostic study (5–7 days)",
       "SOP & reporting system setup",
     ],
+    color: "#7C53A2",
     outcome:
       "Skilled, motivated teams delivering higher consistency and accountability.",
     button: "Request Advisory Session",

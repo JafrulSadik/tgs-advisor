@@ -1,43 +1,5 @@
+import { serviceData } from "@/utils/service-data";
 import ServiceCard from "./service-card";
-
-const coreServices = [
-  {
-    id: 1,
-    service: "Production Efficiency Development",
-    color: "#00BDF2",
-    tag: "production-efficiency-development",
-  },
-  {
-    id: 2,
-    service: "Cost Reduction & Profit Maximization",
-    color: "#F68D3A",
-    tag: "cost-reduction-profit-maximization",
-  },
-  {
-    id: 3,
-    service: "Skill & Motivation Training",
-    color: "#194C60",
-    tag: "skill-motivation-training",
-  },
-  {
-    id: 4,
-    service: "Fabric & Material Optimization",
-    color: "#E7404C",
-    tag: "fabric-material-control",
-  },
-  {
-    id: 5,
-    service: "Factory System Setup & Restructuring",
-    color: "#92C441",
-    tag: "factory-system-setup-restructuring",
-  },
-  {
-    id: 6,
-    service: "Compliance & HR KPI Development",
-    color: "#7C53A2",
-    tag: "hr-compliance-development",
-  },
-];
 
 export default function CoreServices() {
   return (
@@ -52,11 +14,11 @@ export default function CoreServices() {
         </div>
       </div>
       <div className="max-w-5xl w-full grid grid-cols-2 gap-4">
-        {coreServices.map((service, i) => (
+        {serviceData.map((service, i) => (
           <ServiceCard
-            key={service.id}
-            id={service.id}
-            serviceText={service.service}
+            key={i}
+            id={i}
+            serviceText={service.title}
             align={i % 2 === 0 ? "right" : "left"}
             color={service.color}
             tag={service.tag}
