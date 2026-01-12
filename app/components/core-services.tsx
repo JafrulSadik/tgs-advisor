@@ -1,7 +1,12 @@
 import { serviceData } from "@/utils/service-data";
+import { getServices } from "../actions/service-action";
 import ServiceCard from "./service-card";
 
 export default function CoreServices() {
+  const services = getServices();
+
+  console.log({ services });
+
   return (
     <div className="flex flex-col items-center max-w-6xl w-[90%] mx-auto overflow-hidden">
       <div className="relative w-full">

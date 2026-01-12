@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/lib/auth";
 import clsx from "clsx";
 import {
   Briefcase,
@@ -35,6 +36,7 @@ const sidebarItems = [
 ];
 
 export function AdminSidebar() {
+  const { removeAuth } = useAuth();
   const pathname = usePathname();
 
   return (
@@ -87,6 +89,13 @@ export function AdminSidebar() {
               );
             })}
           </nav>
+
+          <div
+            onClick={() => removeAuth()}
+            className="rounded-md flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:text-gray-900 cursor-pointer mx-4 my-2 justify-center hover:bg-gray-200"
+          >
+            Logout
+          </div>
         </div>
 
         {/* Footer / User Profile (Optional) */}

@@ -45,7 +45,6 @@ export function RichTextEditor({
     "underline",
     "strike",
     "list",
-    "bullet",
     "indent",
     "link",
   ];
@@ -63,18 +62,19 @@ export function RichTextEditor({
       />
       <style jsx global>{`
         .rich-text-editor .ql-container {
-          min-height: 150px;
+          min-height: 180px;
           border-bottom-left-radius: 0.5rem;
           border-bottom-right-radius: 0.5rem;
           font-size: 1rem;
+          background: #ffffff;
         }
         .rich-text-editor .ql-toolbar {
           border-top-left-radius: 0.5rem;
           border-top-right-radius: 0.5rem;
-          background: #f8fafc;
+          background: #ffffff;
         }
         .rich-text-editor .ql-editor {
-          min-height: 150px;
+          min-height: 180px;
         }
       `}</style>
     </div>

@@ -1,0 +1,56 @@
+"use server";
+
+import { prisma } from "@/lib/prisma";
+import { ServiceCreateInput, serviceCreateSchema } from "@/lib/schemas";
+import { revalidatePath } from "next/cache";
+
+export async function createService(data: ServiceCreateInput) {
+  const result = serviceCreateSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: "Invalid input", details: result.error.flatten() };
+  }
+
+  const { title, description, color } = result.data;
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+
+  try {
+    const existingService = await prisma.service.findUnique({
+      where: { slug },
+    });
+
+    if (existingService) {
+      return { error: "A service with this title already exists." };
+    }
+
+    await prisma.service.create({
+      data: {
+        title,
+        slug,
+        description,
+        color,
+      },
+    });
+
+    revalidatePath("/admin/services");
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to create service:", error);
+    return { error: "Failed to create service. Please try again." };
+  }
+}
+
+export async function getServices() {
+  try {
+    const services = await prisma.service.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return services;
+  } catch (error) {
+    console.error("Failed to fetch services:", error);
+    return [];
+  }
+}
