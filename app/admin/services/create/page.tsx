@@ -1,4 +1,4 @@
-import { ServiceForm } from "@/app/admin/components/ServiceForm";
+import { ServiceForm } from "../components/service-form";
 
 export default function CreateServicePage() {
   return (

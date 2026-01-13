@@ -1,6 +1,6 @@
 import { getAuthToken } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
-import { AdminSidebar } from "./components/AdminSidebar";
+import { AdminSidebar } from "./components/admin-sidebar";
 
 export default async function AdminLayout({
   children,

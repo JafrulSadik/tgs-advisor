@@ -1,6 +1,6 @@
 import { getService } from "@/app/actions/service-action";
-import { ServiceForm } from "@/app/admin/components/ServiceForm";
 import NotFoundSign from "@/app/components/not-found-sign";
+import { ServiceForm } from "../../components/service-form";
 
 export default async function EditServicePage({
   params,

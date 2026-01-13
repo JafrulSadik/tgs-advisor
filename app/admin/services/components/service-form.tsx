@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { RichTextEditor } from "./RichTextEditor";
+import { RichTextEditor } from "../../components/rich-text-editor";
 
 type ServiceFormProps = {
   service?: ServiceCreateInput;
@@ -59,7 +59,7 @@ export function ServiceForm({ service }: ServiceFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6  p-6 rounded-lg shadow-sm bg-linear-to-br bg-[#fff]"
+      className="space-y-6  p-8 rounded-xl shadow-sm bg-linear-to-br bg-[#fff]"
     >
       {serverError && (
         <div className="p-3 rounded-md bg-red-50 border border-red-200 text-sm text-red-600">
@@ -71,7 +71,7 @@ export function ServiceForm({ service }: ServiceFormProps) {
           htmlFor="title"
           className="block text-sm font-semibold text-slate-900 mb-2"
         >
-          Title
+          Title <span className="text-red-500">*</span>
         </label>
         <input
           id="title"
@@ -91,7 +91,7 @@ export function ServiceForm({ service }: ServiceFormProps) {
           htmlFor="description"
           className="block text-sm font-semibold text-slate-900 mb-2"
         >
-          Description
+          Description <span className="text-red-500">*</span>
         </label>
         <Controller
           name="description"
@@ -114,13 +114,14 @@ export function ServiceForm({ service }: ServiceFormProps) {
           htmlFor="color"
           className="block text-sm font-medium text-gray-700"
         >
-          Color
+          Color <span className="text-red-500">*</span>
         </label>
 
         <div className="flex items-center gap-3">
           <div className="relative">
             <input
               type="color"
+              // eslint-disable-next-line react-hooks/incompatible-library
               value={watch("color")}
               onChange={(e) => setValue("color", e.target.value)}
               className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
@@ -138,13 +139,13 @@ export function ServiceForm({ service }: ServiceFormProps) {
             {...register("color")}
             placeholder="#000000"
             className="
-        h-10 w-32 rounded-lg
-        border border-gray-300
-        bg-white px-3 text-sm uppercase
-        shadow-sm
-        transition
-        focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200
-      "
+                  h-10 w-32 rounded-lg
+                  border border-gray-300
+                  bg-white px-3 text-sm uppercase
+                  shadow-sm
+                  transition
+                  focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200
+                "
           />
         </div>
 

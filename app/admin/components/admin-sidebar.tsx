@@ -25,7 +25,7 @@ const sidebarItems = [
   },
   {
     label: "Team Members",
-    href: "/admin/team",
+    href: "/admin/team-members",
     icon: Users,
   },
   {

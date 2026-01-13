@@ -1,26 +1,30 @@
-import { getServices } from "@/app/actions/service-action";
+import { getTeamMembers } from "@/app/actions/team-action";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import ServiceActions from "./components/service-actions";
+import TeamMembersAction from "./components/team-members-action";
 
-export default async function ServicesPage() {
-  const services = await getServices();
+export default async function TeamPage() {
+  const { data: teamMembers } = await getTeamMembers();
+
+  if (!teamMembers) {
+    return <div>Something went wrong</div>;
+  }
 
   return (
     <div className="p-6">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Services</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Team Members</h1>
           <p className="mt-1 text-sm text-gray-600">
-            Manage your services list
+            Manage your team members list
           </p>
         </div>
         <Link
-          href="/admin/services/create"
+          href="/admin/team-members/create"
           className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
         >
           <Plus className="h-4 w-4" />
-          Create Service
+          Add Team Member
         </Link>
       </div>
 
@@ -33,10 +37,10 @@ export default async function ServicesPage() {
                   Id
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Title
+                  Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Color
+                  Designation
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Created At
@@ -47,7 +51,7 @@ export default async function ServicesPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {services.length === 0 ? (
+              {teamMembers.length === 0 ? (
                 <tr>
                   <td
                     colSpan={5}
@@ -58,30 +62,26 @@ export default async function ServicesPage() {
                   </td>
                 </tr>
               ) : (
-                services.map((service) => (
-                  <tr key={service.id} className="hover:bg-gray-50">
+                teamMembers.map((teamMember) => (
+                  <tr key={teamMember.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">
-                      {service.id}
+                      {teamMember.id}
                     </td>
                     <td className="px-6 py-4 font-medium text-gray-900">
-                      {service.title}
+                      {teamMember.name}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <div
-                          className="h-6 w-6 rounded border border-gray-200 shadow-sm"
-                          style={{ backgroundColor: service.color }}
-                        />
-                        <span className="font-mono text-xs uppercase">
-                          {service.color}
+                        <span className="text-xs uppercase">
+                          {teamMember.designation}
                         </span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      {new Date(service.createdAt).toLocaleDateString()}
+                      {new Date(teamMember.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4">
-                      <ServiceActions id={service.id} />
+                      <TeamMembersAction id={Number(teamMember.id)} />
                     </td>
                   </tr>
                 ))

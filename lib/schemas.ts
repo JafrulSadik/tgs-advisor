@@ -33,5 +33,19 @@ export const serviceUpdateSchema = z.object({
     .optional(),
 });
 
+export const teamCreateSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  designation: z.string().optional(),
+  company: z.string().optional(),
+  education: z.string().optional(),
+  specialization: z.string().optional(),
+  description: z.string().min(1, "Description is required"),
+  image: z.string().optional(),
+});
+
+export const teamUpdateSchema = teamCreateSchema.partial();
+
+export type TeamCreateInput = z.infer<typeof teamCreateSchema>;
+export type TeamUpdateInput = z.infer<typeof teamUpdateSchema>;
 export type ServiceCreateInput = z.infer<typeof serviceCreateSchema>;
 export type ServiceUpdateInput = z.infer<typeof serviceUpdateSchema>;
