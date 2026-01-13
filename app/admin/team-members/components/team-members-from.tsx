@@ -63,7 +63,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6 p-8 rounded-xl shadow-sm bg-[#FFFFFF]"
     >
-      {/* Name */}
       <div className="space-y-2">
         <label
           htmlFor="name"
@@ -83,7 +82,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Designation */}
       <div className="space-y-2">
         <label
           htmlFor="designation"
@@ -103,7 +101,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Company */}
       <div className="space-y-2">
         <label
           htmlFor="company"
@@ -123,7 +120,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Education */}
       <div className="space-y-2">
         <label
           htmlFor="education"
@@ -143,7 +139,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Specialization */}
       <div className="space-y-2">
         <label
           htmlFor="specialization"
@@ -165,7 +160,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Description (Rich Text) */}
       <div className="space-y-2">
         <label
           htmlFor="description"
@@ -189,7 +183,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         )}
       </div>
 
-      {/* Image URL */}
       <div className="space-y-2">
         <label
           htmlFor="image"
@@ -215,7 +208,6 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
         </div>
       )}
 
-      {/* Submit Button */}
       <div className="flex justify-end pt-4">
         <button
           type="submit"

@@ -15,7 +15,7 @@ import { usePathname } from "next/navigation";
 const sidebarItems = [
   {
     label: "Dashboard",
-    href: "/admin",
+    href: "/admin/dashboard",
     icon: LayoutDashboard,
   },
   {
@@ -62,7 +62,7 @@ export function AdminSidebar() {
         <div className="flex-1 overflow-y-auto py-4">
           <nav className="space-y-2 px-3">
             {sidebarItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname.includes(item.href);
               const Icon = item.icon;
 
               return (

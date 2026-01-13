@@ -86,6 +86,7 @@ export async function updateTeamMember(id: number, data: TeamUpdateInput) {
     return { error: "Failed to update team. Please try again." };
   }
 }
+
 export async function getTeamMembers() {
   try {
     const teams = await prisma.team.findMany({
