@@ -1,5 +1,5 @@
 "use client";
-import { ServiceData } from "@/utils/service-data";
+import { Service } from "@prisma/client";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ServiceForm from "./service-form";
@@ -9,7 +9,7 @@ export default function ServiceDetailsCard({
   sequence,
   onSetShowService,
 }: {
-  service: ServiceData;
+  service: Service;
   sequence: number;
   onSetShowService: (data: boolean) => void;
 }) {
@@ -31,8 +31,8 @@ export default function ServiceDetailsCard({
   return (
     <>
       {currentStep === 1 ? (
-        <div id={service.tag}>
-          <div className="relative w-[90%] md:w-full max-w-5xl mx-auto">
+        <div id={service.slug} className="w-full">
+          <div className="relative w-[90%]  lg:min-w-4xl max-w-5xl mx-auto">
             <button
               onClick={handleClose}
               className="z-50 right-1 md:right-4 top-2 absolute text-gray-500 hover:text-gray-700 p-2"
@@ -65,24 +65,10 @@ export default function ServiceDetailsCard({
               {/* Step 1: Service Details */}
               {currentStep === 1 && (
                 <>
-                  <p className="text-sm md:text-base">{service.description}</p>
-
-                  <div className="text-sm md:text-base">
-                    <h4 className="font-bold mb-3">{service.pointsTitle}</h4>
-                    <ul className="space-y-2">
-                      {service.points.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-2 size-1.5 bg-black rounded-full" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <p className="text-sm md:text-base">
-                    <span className="font-semibold">Outcome:</span>{" "}
-                    {service.outcome}
-                  </p>
+                  <div
+                    className="prose prose-neutral max-w-none quill-preview"
+                    dangerouslySetInnerHTML={{ __html: service.description }}
+                  />
 
                   <div className="flex justify-center md:justify-end">
                     <button
@@ -95,7 +81,7 @@ export default function ServiceDetailsCard({
                     } transition-colors duration-500`}
                     >
                       <span className="ml-2 text-xs md:text-sm">
-                        {service.button}
+                        Request Advisory Session
                       </span>
                       <span className="bg-white p-1 rounded-full">
                         <FaArrowRight className="text-[#006489] -rotate-35" />
@@ -129,7 +115,7 @@ export default function ServiceDetailsCard({
               ✕
             </button>
           </div>
-          <ServiceForm serviceTag={service.tag} />
+          <ServiceForm serviceTag={service.slug} />
         </div>
       )}
     </>

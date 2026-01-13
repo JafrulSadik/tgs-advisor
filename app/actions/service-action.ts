@@ -43,6 +43,38 @@ export async function createService(data: ServiceCreateInput) {
   }
 }
 
+export async function updateService(id: number, data: ServiceCreateInput) {
+  const result = serviceCreateSchema.safeParse(data);
+
+  if (!result.success) {
+    return { error: "Invalid input", details: result.error.flatten() };
+  }
+
+  const { title, description, color } = result.data;
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+
+  try {
+    await prisma.service.update({
+      where: { id },
+      data: {
+        title,
+        slug,
+        description,
+        color,
+      },
+    });
+
+    revalidatePath("/admin/services");
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update service:", error);
+    return { error: "Failed to update service. Please try again." };
+  }
+}
+
 export async function getServices() {
   try {
     const services = await prisma.service.findMany({
@@ -52,5 +84,30 @@ export async function getServices() {
   } catch (error) {
     console.error("Failed to fetch services:", error);
     return [];
+  }
+}
+
+export async function getService(id: number) {
+  try {
+    const service = await prisma.service.findUnique({
+      where: { id },
+    });
+    return service;
+  } catch (error) {
+    console.error("Failed to fetch service:", error);
+    return null;
+  }
+}
+
+export async function deleteService(id: number) {
+  try {
+    await prisma.service.delete({
+      where: { id },
+    });
+    revalidatePath("/admin/services");
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to delete service:", error);
+    return { error: "Failed to delete service. Please try again." };
   }
 }

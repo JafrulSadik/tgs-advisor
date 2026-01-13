@@ -1,6 +1,7 @@
 import { getServices } from "@/app/actions/service-action";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import ServiceActions from "./components/service-actions";
 
 export default async function ServicesPage() {
   const services = await getServices();
@@ -40,13 +41,16 @@ export default async function ServicesPage() {
                 <th scope="col" className="px-6 py-3">
                   Created At
                 </th>
+                <th scope="col" className="px-6 py-3">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {services.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={4}
+                    colSpan={5}
                     className="px-6 py-8 text-center text-gray-500"
                   >
                     No services found. Click &quot;Create Service&quot; to add
@@ -75,6 +79,9 @@ export default async function ServicesPage() {
                     </td>
                     <td className="px-6 py-4">
                       {new Date(service.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4">
+                      <ServiceActions id={service.id} />
                     </td>
                   </tr>
                 ))

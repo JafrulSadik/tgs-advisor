@@ -1,16 +1,21 @@
 "use client";
 
-import { createService } from "@/app/actions/service-action";
+import { createService, updateService } from "@/app/actions/service-action";
 import { serviceCreateSchema, type ServiceCreateInput } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { RichTextEditor } from "./RichTextEditor";
 
-export function ServiceForm() {
+type ServiceFormProps = {
+  service?: ServiceCreateInput;
+};
+
+export function ServiceForm({ service }: ServiceFormProps) {
   const router = useRouter();
+  const { id } = useParams();
   const [serverError, setServerError] = useState<string | null>(null);
 
   const {
@@ -23,15 +28,22 @@ export function ServiceForm() {
   } = useForm<ServiceCreateInput>({
     resolver: zodResolver(serviceCreateSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      color: "#00BDF2",
+      title: service ? service.title : "",
+      description: service ? service.description : "",
+      color: service ? service.color : "#00BDF2",
     },
   });
 
   const onSubmit = async (data: ServiceCreateInput) => {
     setServerError(null);
-    const result = await createService(data);
+
+    let result;
+
+    if (id) {
+      result = await updateService(Number(id), data);
+    } else {
+      result = await createService(data);
+    }
 
     if (result.error) {
       setServerError(result.error);
@@ -148,7 +160,8 @@ export function ServiceForm() {
           className="flex items-center gap-2 rounded-lg bg-blue-800 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800/80 disabled:opacity-50"
         >
           {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
-          {isSubmitting ? "Creating..." : "Create Service"}
+          {id && (isSubmitting ? "Updating..." : "Update Service")}
+          {!id && (isSubmitting ? "Creating..." : "Create Service")}
         </button>
       </div>
     </form>

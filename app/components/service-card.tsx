@@ -1,39 +1,22 @@
 "use client";
 
-import { serviceData } from "@/utils/service-data";
+import { Service } from "@prisma/client";
 import { useState } from "react";
 import Hexagon from "./hexagon";
 import ServiceDetailsCard from "./service-details-card";
 
 type ServiceCardProps = {
-  serviceText: string;
   id: number;
-  color: string;
   align: "left" | "right";
-  tag: string;
+  service: Service;
 };
 
-export default function ServiceCard({
-  id,
-  serviceText,
-  color,
-  align,
-  tag,
-}: ServiceCardProps) {
+export default function ServiceCard({ id, align, service }: ServiceCardProps) {
   const [showService, setShowService] = useState(false);
 
-  const service = serviceData.find((service) => service.tag === tag);
-
   const onSetShowService = (data: boolean) => {
-    console.log({
-      data,
-    });
     setShowService(data);
   };
-
-  if (!service) {
-    return null;
-  }
 
   return (
     <div
@@ -48,7 +31,7 @@ export default function ServiceCard({
         }`}
       >
         <div className="relative h-full hover:cursor-pointer">
-          <Hexagon color={color} />
+          <Hexagon color={service.color} />
           <p className="text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-bold tracking-wider">
             {"0" + id}
           </p>
@@ -69,7 +52,7 @@ export default function ServiceCard({
         }}
       >
         <div className={`w-full px-4 lg:px-8`}>
-          <p className={`text-center md:text-lg lg:text-xl`}>{serviceText}</p>
+          <p className={`text-center md:text-lg lg:text-xl`}>{service.title}</p>
         </div>
       </div>
 

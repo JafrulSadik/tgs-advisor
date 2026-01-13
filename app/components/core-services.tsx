@@ -1,11 +1,8 @@
-import { serviceData } from "@/utils/service-data";
 import { getServices } from "../actions/service-action";
 import ServiceCard from "./service-card";
 
-export default function CoreServices() {
-  const services = getServices();
-
-  console.log({ services });
+export default async function CoreServices() {
+  const services = await getServices();
 
   return (
     <div className="flex flex-col items-center max-w-6xl w-[90%] mx-auto overflow-hidden">
@@ -19,16 +16,15 @@ export default function CoreServices() {
         </div>
       </div>
       <div className="max-w-5xl w-full grid grid-cols-2 gap-4">
-        {serviceData.map((service, i) => (
-          <ServiceCard
-            key={i}
-            id={i}
-            serviceText={service.title}
-            align={i % 2 === 0 ? "right" : "left"}
-            color={service.color}
-            tag={service.tag}
-          />
-        ))}
+        {services.length > 0 &&
+          services.map((service, i) => (
+            <ServiceCard
+              key={i}
+              id={i + 1}
+              align={i % 2 === 0 ? "right" : "left"}
+              service={service}
+            />
+          ))}
       </div>
     </div>
   );
