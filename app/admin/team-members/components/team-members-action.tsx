@@ -1,19 +1,42 @@
 "use client";
 
-import { deleteService } from "@/app/actions/service-action";
+import { deleteTeamMember } from "@/app/actions/team-action";
 import Modal from "@/app/components/modal";
 import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function TeamMembersActions({ id }: { id: number }) {
+export default function TeamMembersActions({
+  id,
+  image,
+}: {
+  id: number;
+  image?: string | null;
+}) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const deleteImageByFilename = async (filenameOrUrl?: string) => {
+    if (!filenameOrUrl) return;
+    const url = new URL(
+      `/api/uploads/team-members?${
+        filenameOrUrl.startsWith("/")
+          ? `url=${encodeURIComponent(filenameOrUrl)}`
+          : `filename=${encodeURIComponent(filenameOrUrl)}`
+      }`,
+      window.location.origin
+    );
+    await fetch(url.toString(), { method: "DELETE" });
+  };
+
   const handleDelete = async () => {
     setIsDeleting(true);
-    const result = await deleteService(id);
+    const result = await deleteTeamMember(id);
     if (result.success) {
+      if (image) {
+        await deleteImageByFilename(image);
+      }
+
       setShowModal(false);
     } else {
       alert(result.error);

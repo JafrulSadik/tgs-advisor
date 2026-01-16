@@ -1,7 +1,18 @@
 import { getTeamMembers } from "@/app/actions/team-action";
-import { Plus } from "lucide-react";
+import { ImageIcon, Plus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import TeamMembersAction from "./components/team-members-action";
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "2-digit",
+  timeZone: "UTC",
+});
+
+const formatDate = (date: string | Date) =>
+  dateFormatter.format(typeof date === "string" ? new Date(date) : date);
 
 export default async function TeamPage() {
   const { data: teamMembers } = await getTeamMembers();
@@ -40,6 +51,9 @@ export default async function TeamPage() {
                   Name
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Profile
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Designation
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -71,6 +85,19 @@ export default async function TeamPage() {
                       {teamMember.name}
                     </td>
                     <td className="px-6 py-4">
+                      {teamMember.image ? (
+                        <Image
+                          src={teamMember.image || "/placeholder.svg"}
+                          alt={teamMember.name}
+                          width={40}
+                          height={40}
+                          className="h-8 w-8 rounded-md object-cover"
+                        />
+                      ) : (
+                        <ImageIcon className="h-8 w-8 rounded-md" />
+                      )}
+                    </td>
+                    <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <span className="text-xs uppercase">
                           {teamMember.designation}
@@ -78,10 +105,13 @@ export default async function TeamPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      {new Date(teamMember.createdAt).toLocaleDateString()}
+                      {formatDate(teamMember.createdAt)}
                     </td>
                     <td className="px-6 py-4">
-                      <TeamMembersAction id={Number(teamMember.id)} />
+                      <TeamMembersAction
+                        id={Number(teamMember.id)}
+                        image={teamMember.image}
+                      />
                     </td>
                   </tr>
                 ))

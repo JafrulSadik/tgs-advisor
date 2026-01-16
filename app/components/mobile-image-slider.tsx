@@ -6,19 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+import { GalleryImageType } from "../gallery/components/image-grid";
 
-const images = [
-  "/images/gallery-home/home-gallery-1.png",
-  "/images/gallery-home/home-gallery-2.png",
-  "/images/gallery-home/home-gallery-3.png",
-  "/images/gallery-home/home-gallery-4.png",
-  "/images/gallery-home/home-gallery-5.png",
-  "/images/gallery-home/home-gallery-6.png",
-  "/images/gallery-home/home-gallery-7.png",
-  "/images/gallery-home/home-gallery-8.png",
-];
-
-export default function MobileImageSlider() {
+export default function MobileImageSlider({
+  images,
+}: {
+  images: GalleryImageType[];
+}) {
   return (
     <div className="w-full py-20">
       <Swiper
@@ -43,11 +37,11 @@ export default function MobileImageSlider() {
         {images.map((src, index) => (
           <SwiperSlide
             key={index}
-            className="!w-[60%] md:!w-[40%] aspect-[4/3] md:aspect-[3/4]"
+            className="w-[60%]! md:w-[40%]! aspect-4/3 md:aspect-3/4"
           >
             <div className="relative w-full h-full">
               <Image
-                src={src}
+                src={src.image}
                 alt=""
                 width={500}
                 height={500}

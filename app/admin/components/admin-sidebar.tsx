@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/lib/auth";
+import { logout } from "@/lib/auth/auth";
 import clsx from "clsx";
 import {
   Briefcase,
@@ -42,7 +43,6 @@ export function AdminSidebar() {
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-600 bg-blue-950">
       <div className="flex h-full flex-col">
-        {/* Logo Section */}
         <div className="flex h-16 items-center border-b border-gray-700 px-6 py-2">
           <Link
             href="/admin"
@@ -58,7 +58,6 @@ export function AdminSidebar() {
           </Link>
         </div>
 
-        {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto py-4">
           <nav className="space-y-2 px-3">
             {sidebarItems.map((item) => {
@@ -91,14 +90,16 @@ export function AdminSidebar() {
           </nav>
 
           <div
-            onClick={() => removeAuth()}
+            onClick={async () => {
+              removeAuth();
+              await logout();
+            }}
             className="rounded-md flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:text-gray-900 cursor-pointer mx-4 my-2 justify-center hover:bg-gray-200"
           >
             Logout
           </div>
         </div>
 
-        {/* Footer / User Profile (Optional) */}
         <div className="border-t border-gray-700 p-4">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-gray-500 flex items-center justify-center">

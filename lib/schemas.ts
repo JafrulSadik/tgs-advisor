@@ -49,3 +49,26 @@ export type TeamCreateInput = z.infer<typeof teamCreateSchema>;
 export type TeamUpdateInput = z.infer<typeof teamUpdateSchema>;
 export type ServiceCreateInput = z.infer<typeof serviceCreateSchema>;
 export type ServiceUpdateInput = z.infer<typeof serviceUpdateSchema>;
+
+export const galleryImageCreateSchema = z.object({
+  name: z.string().min(1, "Image name is required"),
+  image: z.string().min(1, "Image URL is required"),
+});
+
+export const galleryImageOrderSchema = z
+  .array(
+    z.object({
+      id: z.number().int().positive(),
+      sequence: z.number().int().min(1).max(8),
+    })
+  )
+  .refine(
+    (items) =>
+      new Set(items.map((item) => item.sequence)).size === items.length,
+    {
+      message: "Sequences must be unique",
+    }
+  );
+
+export type GalleryImageCreateInput = z.infer<typeof galleryImageCreateSchema>;
+export type GalleryImageOrderInput = z.infer<typeof galleryImageOrderSchema>;

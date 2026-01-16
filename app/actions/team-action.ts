@@ -87,6 +87,19 @@ export async function updateTeamMember(id: number, data: TeamUpdateInput) {
   }
 }
 
+export async function deleteTeamMember(id: number) {
+  try {
+    await prisma.team.delete({
+      where: { id },
+    });
+    revalidatePath("/admin/team-members");
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to delete team:", error);
+    return { error: "Failed to delete team. Please try again." };
+  }
+}
+
 export async function getTeamMembers() {
   try {
     const teams = await prisma.team.findMany({

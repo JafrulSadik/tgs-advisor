@@ -8,6 +8,7 @@ type ModalProps = {
   confirmText?: string;
   handleDelete: () => void;
   setShowModal: (show: boolean) => void;
+  onCancel?: () => void;
 };
 
 export default function Modal({
@@ -18,9 +19,10 @@ export default function Modal({
   confirmText = "Delete",
   handleDelete,
   setShowModal,
+  onCancel = () => {},
 }: ModalProps) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-99999 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div className="w-full max-w-[400px] overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="p-6">
           <div className="mb-4 flex items-center gap-3">
@@ -33,7 +35,10 @@ export default function Modal({
         </div>
         <div className="flex items-center justify-end gap-3 bg-gray-50 px-6 py-4">
           <button
-            onClick={() => setShowModal(false)}
+            onClick={() => {
+              onCancel();
+              setShowModal(false);
+            }}
             className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
             disabled={isDeleting}
           >

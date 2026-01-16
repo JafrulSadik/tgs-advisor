@@ -53,7 +53,7 @@ const Accordion = () => {
             {/* Header */}
             <button
               onClick={() => toggleAccordion(index)}
-              className="flex w-full items-center justify-between text-left text-base font-bold text-white text-sm md:text-xl"
+              className="flex w-full items-center justify-between text-left text-base font-bold text-white md:text-xl"
             >
               {item.question}
 

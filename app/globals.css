@@ -41,22 +41,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins);
 }
+
 .quill-preview p {
   white-space: pre-line;
 }
 
-/* Base list spacing */
+.quill-preview,
+.quill-preview div {
+  white-space: pre-line;
+}
+
 .quill-preview ol,
 .quill-preview ul {
   padding-left: 2rem;
 }
 
-/* Reset */
 .quill-preview li {
   margin-bottom: 0.25rem;
 }
 
-/* BULLET LIST */
 .quill-preview ul {
   list-style-type: disc;
 }
@@ -64,7 +67,6 @@ body {
   list-style-type: circle;
 }
 
-/* NUMBERED LIST */
 .quill-preview ol {
   list-style-type: decimal;
 }

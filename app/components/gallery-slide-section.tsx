@@ -2,31 +2,57 @@
 
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect } from "react";
+import { GalleryImageType } from "../gallery/components/image-grid";
 import SliderItem from "./slide";
 import SliderBottomItem from "./slide-bottom";
 
-const images = [
-  "/images/gallery-home/home-gallery-1.png",
-  "/images/gallery-home/home-gallery-2.png",
-  "/images/gallery-home/home-gallery-3.png",
-  "/images/gallery-home/home-gallery-4.png",
-];
+function normalizeImages(images: GalleryImageType[]) {
+  if (!Array.isArray(images) || images.length === 0) return [];
 
-const bottomImages = [
-  "/images/gallery-home/home-gallery-5.png",
-  "/images/gallery-home/home-gallery-6.png",
-  "/images/gallery-home/home-gallery-7.png",
-  "/images/gallery-home/home-gallery-8.png",
-];
+  if (images.length >= 4) {
+    return images.slice(0, 4);
+  }
+
+  const result = [];
+  let i = 0;
+
+  while (result.length < 4) {
+    result.push(images[i % images.length]);
+    i++;
+  }
+
+  return result;
+}
+
+// const images = [
+//   "/images/gallery-home/home-gallery-1.png",
+//   "/images/gallery-home/home-gallery-2.png",
+//   "/images/gallery-home/home-gallery-3.png",
+//   "/images/gallery-home/home-gallery-4.png",
+// ];
+
+// const bottomImages = [
+//   "/images/gallery-home/home-gallery-5.png",
+//   "/images/gallery-home/home-gallery-6.png",
+//   "/images/gallery-home/home-gallery-7.png",
+//   "/images/gallery-home/home-gallery-8.png",
+// ];
 
 const ITEM_WIDTH = 275;
 const GAP = 10;
 const ITEM_FULL = ITEM_WIDTH + GAP;
 
-const TOTAL_WIDTH = images.length * ITEM_FULL;
-
-export default function GallerySlideSection() {
+export default function GallerySlideSection({
+  images,
+}: {
+  images: GalleryImageType[];
+}) {
+  const TOTAL_WIDTH = 4 * ITEM_FULL;
   const x = useMotionValue(0);
+
+  const imagesUp = normalizeImages(images.slice(0, 4));
+  const imagesDown = normalizeImages(images.slice(4, 8));
+
   useEffect(() => {
     return x.on("change", (latest) => {
       if (latest <= -TOTAL_WIDTH) {
@@ -36,32 +62,36 @@ export default function GallerySlideSection() {
         x.set(latest - TOTAL_WIDTH);
       }
     });
-  }, []);
+  }, [x, TOTAL_WIDTH]);
 
   return (
     <div className="overflow-hidden w-full py-20 space-y-4">
-      <motion.div
-        drag="x"
-        dragElastic={0.08}
-        dragMomentum={true}
-        className=" flex items-end gap-5 cursor-grab active:cursor-grabbing h-[300px]"
-        style={{ x }}
-      >
-        {[...images, ...images].map((src, i) => (
-          <SliderItem key={i} src={src} index={i} x={x} />
-        ))}
-      </motion.div>
-      <motion.div
-        drag="x"
-        dragElastic={0.08}
-        dragMomentum={true}
-        className="flex items-start gap-5 cursor-grab active:cursor-grabbing h-[300px]"
-        style={{ x }}
-      >
-        {[...bottomImages, ...bottomImages].map((src, i) => (
-          <SliderBottomItem key={i} src={src} index={i} x={x} />
-        ))}
-      </motion.div>
+      {imagesUp.length > 0 && (
+        <motion.div
+          drag="x"
+          dragElastic={0.08}
+          dragMomentum={true}
+          className=" flex items-end gap-5 cursor-grab active:cursor-grabbing h-[300px]"
+          style={{ x }}
+        >
+          {[...imagesUp, ...imagesUp].map((img, i) => (
+            <SliderItem key={i} src={img.image} index={i} x={x} />
+          ))}
+        </motion.div>
+      )}
+      {imagesDown.length > 0 && (
+        <motion.div
+          drag="x"
+          dragElastic={0.08}
+          dragMomentum={true}
+          className="flex items-start gap-5 cursor-grab active:cursor-grabbing h-[300px]"
+          style={{ x }}
+        >
+          {[...imagesDown, ...imagesDown].map((img, i) => (
+            <SliderBottomItem key={i} src={img.image} index={i} x={x} />
+          ))}
+        </motion.div>
+      )}
     </div>
   );
 }
