@@ -60,14 +60,14 @@ export const galleryImageOrderSchema = z
     z.object({
       id: z.number().int().positive(),
       sequence: z.number().int().min(1).max(8),
-    })
+    }),
   )
   .refine(
     (items) =>
       new Set(items.map((item) => item.sequence)).size === items.length,
     {
       message: "Sequences must be unique",
-    }
+    },
   );
 
 export type GalleryImageCreateInput = z.infer<typeof galleryImageCreateSchema>;
@@ -80,17 +80,45 @@ export const aboutUpdateSchema = z.object({
   address: z.string().optional(),
   facebook: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.string().url("Invalid URL").optional()
+    z.string().url("Invalid URL").optional(),
   ),
   linkedin: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.string().url("Invalid URL").optional()
+    z.string().url("Invalid URL").optional(),
   ),
   youtube: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.string().url("Invalid URL").optional()
+    z.string().url("Invalid URL").optional(),
   ),
 });
 
 // Infer type automatically
 export type AboutUpdateInput = z.infer<typeof aboutUpdateSchema>;
+
+// Certification Schemas
+export const certificationCreateSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  image: z.string().optional(),
+});
+
+export const certificationUpdateSchema = certificationCreateSchema.partial();
+
+export type CertificationCreateInput = z.infer<
+  typeof certificationCreateSchema
+>;
+export type CertificationUpdateInput = z.infer<
+  typeof certificationUpdateSchema
+>;
+
+export const testimonialCreateSchema = z.object({
+  clientName: z.string().min(1, "Client name is required"),
+  clientDesignation: z.string().optional(),
+  clientCompany: z.string().optional(),
+  review: z.string().min(1, "Review is required"),
+  clientImage: z.string().optional(),
+});
+
+export const testimonialUpdateSchema = testimonialCreateSchema.partial();
+
+export type TestimonialCreateInput = z.infer<typeof testimonialCreateSchema>;
+export type TestimonialUpdateInput = z.infer<typeof testimonialUpdateSchema>;

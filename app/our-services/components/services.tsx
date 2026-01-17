@@ -1,7 +1,17 @@
-import { serviceData } from "@/utils/service-data";
+import { getServices } from "@/app/actions/service-action";
 import ServiceCard from "./service-card";
 
-export default function Services() {
+export default async function Services() {
+  const { data: services } = await getServices();
+
+  if (!services) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        Failed to load services!
+      </div>
+    );
+  }
+
   return (
     <div className="my-10 md:my-15">
       <h2 className="md:text-xl text-center max-w-[90%] lg:max-w-5xl mx-auto">
@@ -19,7 +29,7 @@ export default function Services() {
       </div>
 
       <div className="max-w-[90%] lg:max-w-5xl mx-auto">
-        {serviceData.map((service, i) => (
+        {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} sequence={i + 1} />
         ))}
       </div>

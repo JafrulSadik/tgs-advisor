@@ -1,7 +1,8 @@
-import { getServices } from "@/app/actions/service-action";
-import { Plus } from "lucide-react";
+import { getCertifications } from "@/app/actions/certification-action";
+import { ImageIcon, Plus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import ServiceActions from "./components/service-actions";
+import CertificatesAction from "./components/certificates-action";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -13,28 +14,28 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 const formatDate = (date: string | Date) =>
   dateFormatter.format(typeof date === "string" ? new Date(date) : date);
 
-export default async function ServicesPage() {
-  const { data: services } = await getServices();
+export default async function CertificatesPage() {
+  const { data: certificates } = await getCertifications();
 
-  if (!services) {
-    return <div className="p-6">No services found</div>;
+  if (!certificates) {
+    return <div>Something went wrong</div>;
   }
 
   return (
     <div className="p-6">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Services</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Certificates</h1>
           <p className="mt-1 text-sm text-gray-600">
-            Manage your services list
+            Manage your certificates list
           </p>
         </div>
         <Link
-          href="/admin/services/create"
+          href="/admin/certificates/create"
           className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
         >
           <Plus className="h-4 w-4" />
-          Create Service
+          Add Certificate
         </Link>
       </div>
 
@@ -50,7 +51,7 @@ export default async function ServicesPage() {
                   Title
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Color
+                  Image
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Created At
@@ -61,41 +62,44 @@ export default async function ServicesPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {services.length === 0 ? (
+              {certificates.length === 0 ? (
                 <tr>
                   <td
                     colSpan={5}
                     className="h-[150px] text-center text-gray-500"
                   >
-                    No services found. Click &quot;Create Service&quot; to add
-                    one.
+                    No certificates found. Click &quot;Add Certificate&quot; to
+                    add one.
                   </td>
                 </tr>
               ) : (
-                services.map((service) => (
-                  <tr key={service.id} className="hover:bg-gray-50">
+                certificates.map((item) => (
+                  <tr key={item.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">
-                      {service.id}
+                      {item.id}
                     </td>
                     <td className="px-6 py-4 font-medium text-gray-900">
-                      {service.title}
+                      {item.title}
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="h-6 w-6 rounded border border-gray-200 shadow-sm"
-                          style={{ backgroundColor: service.color }}
+                      {item.image ? (
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          alt={item.title}
+                          width={40}
+                          height={40}
+                          className="h-8 w-8 rounded-md object-cover"
                         />
-                        <span className="font-mono text-xs uppercase">
-                          {service.color}
-                        </span>
-                      </div>
+                      ) : (
+                        <ImageIcon className="h-8 w-8 rounded-md" />
+                      )}
                     </td>
+                    <td className="px-6 py-4">{formatDate(item.createdAt)}</td>
                     <td className="px-6 py-4">
-                      {formatDate(service.createdAt)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <ServiceActions id={service.id} />
+                      <CertificatesAction
+                        id={Number(item.id)}
+                        image={item.image}
+                      />
                     </td>
                   </tr>
                 ))

@@ -80,10 +80,10 @@ export async function getServices() {
     const services = await prisma.service.findMany({
       orderBy: { createdAt: "desc" },
     });
-    return services;
+    return { success: true, data: services };
   } catch (error) {
     console.error("Failed to fetch services:", error);
-    return [];
+    return { error: "Failed to fetch services." };
   }
 }
 

@@ -4,10 +4,12 @@ import { useAuth } from "@/lib/auth";
 import { logout } from "@/lib/auth/auth";
 import clsx from "clsx";
 import {
+  Award,
   Briefcase,
   Image as ImageIcon,
   Info,
   LayoutDashboard,
+  Quote,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -34,6 +36,16 @@ const sidebarItems = [
     label: "Gallery Images",
     href: "/admin/gallery",
     icon: ImageIcon,
+  },
+  {
+    label: "Testimonials",
+    href: "/admin/testimonials",
+    icon: Quote,
+  },
+  {
+    label: "Awards and Certificates",
+    href: "/admin/certificates",
+    icon: Award,
   },
   {
     label: "About",
@@ -78,7 +90,7 @@ export function AdminSidebar() {
                     "group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                     isActive
                       ? " bg-blue-900/20 text-blue-400"
-                      : "text-gray-700 dark:text-gray-400 hover:bg-blue-900/40 hover:text-white"
+                      : "text-gray-700 dark:text-gray-400 hover:bg-blue-900/40 hover:text-white",
                   )}
                 >
                   <Icon
@@ -86,7 +98,7 @@ export function AdminSidebar() {
                       "mr-3 h-5 w-5 shrink-0",
                       isActive
                         ? "text-blue-700 dark:text-blue-400"
-                        : "text-gray-400 group-hover:text-gray-500"
+                        : "text-gray-400 group-hover:text-gray-500",
                     )}
                   />
                   {item.label}

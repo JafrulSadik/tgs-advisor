@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { AboutType } from "@/app/types/about";
+import { ServiceType } from "@/app/types/service";
 import {
   FacebookIcon,
   HomeIcon,
@@ -10,7 +11,6 @@ import {
   PhoneIcon,
 } from "@/public/icons";
 import TgsAdvisorLogo from "@/public/tgs-logo.svg";
-import { serviceData } from "@/utils/service-data";
 import Link from "next/link";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 
@@ -25,9 +25,10 @@ const footerLinks = [
 
 type FooterProps = {
   about: AboutType;
+  services: ServiceType[];
 };
 
-export default function Footer({ about }: FooterProps) {
+export default function Footer({ about, services }: FooterProps) {
   return (
     <div className="bg-navy">
       <div className="mx-auto max-w-6xl grid grid-cols-12 py-15 gap-5 md:gap-y-10 lg:gap-5 w-[80%] lg:w-[90%]">
@@ -113,10 +114,10 @@ export default function Footer({ about }: FooterProps) {
             <hr className="border-2 w-full text-yellow" />
           </div>
           <ul className="space-y-2 text-sm md:text-base">
-            {serviceData.map((service, i) => (
+            {services.map((service, i) => (
               <li key={i} className="flex gap-2 items-center">
                 <Link
-                  href={`/our-services#${service.tag}`}
+                  href={`/our-services#${service.slug}`}
                   className="flex gap-2 items-center"
                 >
                   <span className="size-2 bg-white rounded-full" />{" "}

@@ -9,7 +9,11 @@ import {
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function FloatingWhatsapp() {
+export default function FloatingWhatsapp({
+  whatsappNumber,
+}: {
+  whatsappNumber: string;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
 
@@ -25,7 +29,7 @@ export default function FloatingWhatsapp() {
     <AnimatePresence>
       {isVisible && (
         <motion.a
-          href="https://wa.me/+8801713262940"
+          href={`https://wa.me/${whatsappNumber}`}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.5, y: 100 }}

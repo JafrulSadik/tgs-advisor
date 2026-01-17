@@ -1,9 +1,11 @@
-import { getServices } from "../actions/service-action";
+import { ServiceType } from "../types/service";
 import ServiceCard from "./service-card";
 
-export default async function CoreServices() {
-  const services = await getServices();
-
+export default async function CoreServices({
+  services,
+}: {
+  services: ServiceType[];
+}) {
   return (
     <div className="flex flex-col items-center max-w-6xl w-[90%] mx-auto overflow-hidden">
       <div className="relative w-full">

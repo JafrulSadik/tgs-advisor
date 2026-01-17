@@ -1,11 +1,16 @@
 // import { Appostrophi } from "@/public/images/homepage";
 // import Image from "next/image";
 
+import { TestimonialType } from "../types/testimonial";
 import TestimonialSlider from "./testimonial-slider";
 
 // import Profile from "@/public/images/homepage/clients/managing-director.svg";
 
-export default function ClientFeedback() {
+export default function ClientFeedback({
+  testimonials,
+}: {
+  testimonials: TestimonialType[];
+}) {
   return (
     <div className="flex my-15 overflow-hidden flex-col gap-10 lg:gap-10 items-center w-full py-5 bg-body sm:bg-none md:bg-none lg:bg-no-repeat ">
       <div className="grid grid-cols-12 w-full  bg-cyan">
@@ -20,7 +25,15 @@ export default function ClientFeedback() {
             <p className="text-sm text-white md:text-lg">Testimonials</p>
           </div>
 
-          <TestimonialSlider />
+          {testimonials.length > 0 ? (
+            <TestimonialSlider testimonials={testimonials} />
+          ) : (
+            <div className="h-56 flex items-center justify-center">
+              <p className="text-center text-white">
+                No testimonials available.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

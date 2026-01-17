@@ -1,11 +1,26 @@
 "use client";
 
 import { upsertAbout } from "@/app/actions/about-action";
-import { AboutUpdateInput, aboutUpdateSchema } from "@/lib/schemas";
+import { AboutUpdateInput } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import z from "zod";
+
+const optionalUrlField = z
+  .union([z.string().url("Invalid URL"), z.literal("")])
+  .optional()
+  .transform((val) => (val ? val : undefined));
+export const aboutSchema = z.object({
+  email: z.string().email("Invalid email address").optional(),
+  phone: z.string().optional(),
+  whatsapp: z.string().optional(),
+  address: z.string().optional(),
+  facebook: optionalUrlField,
+  linkedin: optionalUrlField,
+  youtube: optionalUrlField,
+});
 
 export default function AboutDetailsForm({
   about,
@@ -18,7 +33,7 @@ export default function AboutDetailsForm({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<AboutUpdateInput>({
-    resolver: zodResolver(aboutUpdateSchema),
+    resolver: zodResolver(aboutSchema),
     defaultValues: {
       email: about?.email ?? undefined,
       phone: about?.phone ?? undefined,

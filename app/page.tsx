@@ -1,6 +1,9 @@
 import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import { getAbout } from "./actions/about-action";
+import { getCertifications } from "./actions/certification-action";
+import { getServices } from "./actions/service-action";
+import { getTestimonials } from "./actions/testimonials-action";
 import AwardsAndCertificates from "./components/awards-and-certificates";
 import ClientFeedback from "./components/client-feedback";
 import CoreServices from "./components/core-services";
@@ -15,8 +18,11 @@ import WhyChooseUs from "./components/why-choose-us";
 
 export default async function Home() {
   const { data: about } = await getAbout();
+  const { data: certificates } = await getCertifications();
+  const { data: testimonials } = await getTestimonials();
+  const { data: services } = await getServices();
 
-  if (!about) {
+  if (!about || !certificates || !testimonials || !services) {
     return (
       <div className="min-h-screen flex justify-center items-center">
         Failed to fetch about data.
@@ -29,16 +35,16 @@ export default async function Home() {
       <Navbar />
       <Hero />
       <WhatWeDo />
-      <CoreServices />
-      <ClientFeedback />
+      <CoreServices services={services} />
+      <ClientFeedback testimonials={testimonials} />
       <HowWeApproch />
       <GallerySection />
       <WhyChooseUs />
       <FaqSection />
       <PartnerWithUs />
-      <AwardsAndCertificates />
-      <FloatingWhatsapp />
-      <Footer about={about} />
+      <AwardsAndCertificates certificates={certificates} />
+      <FloatingWhatsapp whatsappNumber={about.whatsapp || ""} />
+      <Footer about={about} services={services} />
     </div>
   );
 }

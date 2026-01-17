@@ -1,19 +1,20 @@
 "use client";
-import { ServiceData } from "@/utils/service-data";
+import { ServiceType } from "@/app/types/service";
 import { useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
 import ServiceForm from "./service-form";
 
 type ServiceCardProps = {
   sequence: number;
-  service: ServiceData;
+  service: ServiceType;
 };
 
 export default function ServiceCard({ service, sequence }: ServiceCardProps) {
   const [showForm, setShowForm] = useState(false);
 
+  const description = service?.description?.replace(/<p><\/p>/g, "<br/>");
+
   return (
-    <div id={service.tag} className="pt-20">
+    <div id={service.slug} className="pt-20">
       <div className="relative max-w-5xl mx-auto">
         {/* Title badge */}
         <div className="absolute w-[80%] lg:min-w-[35%] md:w-auto -top-[4.5%] md:-top-[4%] right-1/2 translate-x-1/2 lg:-translate-x-2/20 z-30">
@@ -33,7 +34,7 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
         </div>
 
         {/* Card */}
-        <div
+        {/* <div
           className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl space-y-5 ${
             sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
           }`}
@@ -72,7 +73,14 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
               </span>
             </button>
           </div>
-        </div>
+        </div> */}
+
+        <div
+          className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl ${
+            sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
+          }`}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
 
       {/* Fullscreen Form Modal */}
@@ -88,7 +96,7 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
             </button>
 
             <div className="overflow-y-auto">
-              <ServiceForm serviceTag={service.tag} />
+              <ServiceForm serviceTag={service.slug} />
             </div>
           </div>
         </div>
