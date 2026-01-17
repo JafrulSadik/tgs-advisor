@@ -72,3 +72,25 @@ export const galleryImageOrderSchema = z
 
 export type GalleryImageCreateInput = z.infer<typeof galleryImageCreateSchema>;
 export type GalleryImageOrderInput = z.infer<typeof galleryImageOrderSchema>;
+
+export const aboutUpdateSchema = z.object({
+  email: z.string().email("Invalid email address").optional(),
+  phone: z.string().optional(),
+  whatsapp: z.string().optional(),
+  address: z.string().optional(),
+  facebook: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.string().url("Invalid URL").optional()
+  ),
+  linkedin: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.string().url("Invalid URL").optional()
+  ),
+  youtube: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.string().url("Invalid URL").optional()
+  ),
+});
+
+// Infer type automatically
+export type AboutUpdateInput = z.infer<typeof aboutUpdateSchema>;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { AboutType } from "@/app/types/about";
 import {
   FacebookIcon,
   HomeIcon,
@@ -22,7 +23,11 @@ const footerLinks = [
   { title: "Contact Us", href: "/contact-us" },
 ];
 
-export default function Footer() {
+type FooterProps = {
+  about: AboutType;
+};
+
+export default function Footer({ about }: FooterProps) {
   return (
     <div className="bg-navy">
       <div className="mx-auto max-w-6xl grid grid-cols-12 py-15 gap-5 md:gap-y-10 lg:gap-5 w-[80%] lg:w-[90%]">
@@ -37,10 +42,10 @@ export default function Footer() {
             </h3>
             <hr className="border-2 w-full text-yellow" />
           </div>
-
+          {/* https://www.facebook.com/share/1aNqAgFpQV? */}
           <div className="flex gap-4 mt-3 items-center">
             <Link
-              href="https://www.facebook.com/share/1aNqAgFpQV"
+              href={about.facebook || ""}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -50,13 +55,37 @@ export default function Footer() {
                 alt="facebook-icon"
               />
             </Link>
-            <TbBrandYoutubeFilled className="size-7 text-[#ffffff]" />
-            <Image className="size-6" src={LinkedinIcon} alt="linkedin-icon" />
-            <Image
-              className="size-6"
-              src={InstagramIcon}
-              alt="instagram-icon"
-            />
+            <Link
+              href={about.youtube || ""}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TbBrandYoutubeFilled className="size-7 text-[#ffffff]" />
+            </Link>
+
+            <Link
+              href={about.linkedin || ""}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="size-6"
+                src={LinkedinIcon}
+                alt="linkedin-icon"
+              />
+            </Link>
+
+            <Link
+              href={about.facebook || ""}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="size-6"
+                src={InstagramIcon}
+                alt="instagram-icon"
+              />
+            </Link>
           </div>
         </div>
 
@@ -112,7 +141,7 @@ export default function Footer() {
                 src={PhoneIcon}
                 alt="phone-icon"
               />
-              <Link href="tel:+8801713262940">+8801713-262940</Link>
+              <Link href={`tel:${about.phone}`}>{about.phone}</Link>
             </li>
             <li className="flex gap-2 items-start">
               <Image
@@ -120,8 +149,7 @@ export default function Footer() {
                 src={MailIcon}
                 alt="email-icon"
               />
-
-              <p>contact@tgsadvisor.com</p>
+              <Link href={`mailto:${about.email}`}>{about.email}</Link>
             </li>
             <li className="flex gap-2 items-start">
               <Image
@@ -129,11 +157,7 @@ export default function Footer() {
                 src={HomeIcon}
                 alt="location-icon"
               />
-              <p>
-                House : 66 Road : 18 Sector : 11
-                <br />
-                Uttara, Dhaka, Bangladesh
-              </p>
+              <p>{about.address}</p>
             </li>
           </ul>
         </div>

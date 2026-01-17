@@ -1,5 +1,6 @@
 import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
+import { getAbout } from "./actions/about-action";
 import AwardsAndCertificates from "./components/awards-and-certificates";
 import ClientFeedback from "./components/client-feedback";
 import CoreServices from "./components/core-services";
@@ -12,7 +13,17 @@ import PartnerWithUs from "./components/partner-with-us";
 import WhatWeDo from "./components/what-we-do";
 import WhyChooseUs from "./components/why-choose-us";
 
-export default function Home() {
+export default async function Home() {
+  const { data: about } = await getAbout();
+
+  if (!about) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        Failed to fetch about data.
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-[1440px]">
       <Navbar />
@@ -27,7 +38,7 @@ export default function Home() {
       <PartnerWithUs />
       <AwardsAndCertificates />
       <FloatingWhatsapp />
-      <Footer />
+      <Footer about={about} />
     </div>
   );
 }

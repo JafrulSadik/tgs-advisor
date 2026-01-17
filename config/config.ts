@@ -4,3 +4,7 @@ export const authTokenLocalStorageKey =
   "tgs_advisor_user_auth_token";
 
 export const galleryLimit = 8;
+
+export const defaultPassword = process.env.DEFAULT_PASSWORD || "";
+export const defaultUserName = process.env.DEFAULT_USER_NAME || "";
+export const defaultUserEmail = process.env.DEFAULT_USER_EMAIL || "";

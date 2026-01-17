@@ -51,3 +51,17 @@ model ImageGallery {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model About {
+  id        Int      @id @default(autoincrement())
+  email     String?
+  phone     String?
+  whatsapp  String?
+  address   String?
+  facebook  String?
+  linkedin  String?
+  youtube   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

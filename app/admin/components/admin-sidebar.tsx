@@ -6,6 +6,7 @@ import clsx from "clsx";
 import {
   Briefcase,
   Image as ImageIcon,
+  Info,
   LayoutDashboard,
   Users,
 } from "lucide-react";
@@ -33,6 +34,11 @@ const sidebarItems = [
     label: "Gallery Images",
     href: "/admin/gallery",
     icon: ImageIcon,
+  },
+  {
+    label: "About",
+    href: "/admin/about",
+    icon: Info,
   },
 ];
 
@@ -94,7 +100,7 @@ export function AdminSidebar() {
               removeAuth();
               await logout();
             }}
-            className="rounded-md flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:text-gray-900 cursor-pointer mx-4 my-2 justify-center hover:bg-gray-200"
+            className="mt-4 rounded-md flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:text-gray-900 cursor-pointer mx-4 my-2 justify-center hover:bg-gray-200"
           >
             Logout
           </div>
