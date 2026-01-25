@@ -5,49 +5,32 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+import { ServiceType } from "@/app/types/service";
 import { HamburgerMenuIcon, WhatsappIcon } from "@/public";
 import Logo from "@/public/tgs-logo.svg";
 import Image from "next/image";
 
-const menuItems = [
+const menuItems = (services: ServiceType[]) => [
   { title: "Who We Are", link: "/who-we-are" },
   { title: "Vision & Mission", link: "/our-vision-and-mission" },
   {
     title: "Our Services",
     link: "/our-services",
-    submenus: [
-      {
-        title: "Production & Efficiency Development",
-        link: "/our-services#production-efficiency-development",
-      },
-      {
-        title: "Cost Reduction & Profit Improvement",
-        link: "/our-services#cost-reduction-profit-maximization",
-      },
-      {
-        title: "Skill & Motivation Training",
-        link: "/our-services#skill-motivation-training",
-      },
-      {
-        title: "Fabric & Material Control",
-        link: "/our-services#fabric-material-control",
-      },
-      {
-        title: "Factory System Setup & Restructuring",
-        link: "/our-services#factory-system-setup-restructuring",
-      },
-      {
-        title: "Compliance & HR KPI Development",
-        link: "/our-services#hr-compliance-development",
-      },
-    ],
+    submenus: services.map((service) => ({
+      title: service.title,
+      link: `/our-services#${service.slug}`,
+    })),
   },
   { title: "Our Team", link: "/our-team" },
   { title: "Gallery", link: "/gallery" },
   { title: "Download", link: "/download" },
 ];
 
-export default function Navbar() {
+type NavbarProps = {
+  services: ServiceType[];
+};
+
+export default function Navbar({ services }: NavbarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -71,7 +54,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="relative hidden min-[990px]:flex gap-4 justify-between w-full text-white md:text-sm lg:text-base">
-            {menuItems.map((menu) => (
+            {menuItems(services).map((menu) => (
               <div
                 key={menu.title}
                 className="relative "
@@ -175,7 +158,7 @@ export default function Navbar() {
               </button>
 
               <div className="mt-10 flex flex-col gap-2">
-                {menuItems.map((menu) => (
+                {menuItems(services).map((menu) => (
                   <div key={menu.title}>
                     <button
                       onClick={() =>

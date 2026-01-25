@@ -25,6 +25,7 @@ export default async function CoreServices({
               id={i + 1}
               align={i % 2 === 0 ? "right" : "left"}
               service={service}
+              services={services}
             />
           ))}
       </div>

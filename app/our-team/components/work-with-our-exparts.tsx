@@ -1,6 +1,13 @@
+import { ServiceType } from "@/app/types/service";
 import ConsultationForm from "./consultation-form";
 
-export default function WorkWithOurExparts() {
+type WorkWithOurExpartsProps = {
+  services: ServiceType[];
+};
+
+export default function WorkWithOurExparts({
+  services,
+}: WorkWithOurExpartsProps) {
   return (
     <div className="">
       <div className="mx-auto flex w-fit items-center gap-2 rounded-full border-2 border-blue px-2 py-1 font-bold uppercase md:px-4 md:py-1">
@@ -9,7 +16,7 @@ export default function WorkWithOurExparts() {
         </p>
       </div>
 
-      <ConsultationForm />
+      <ConsultationForm services={services} />
     </div>
   );
 }

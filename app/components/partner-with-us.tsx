@@ -1,6 +1,11 @@
+import { ServiceType } from "../types/service";
 import PartnerWithUsForm from "./partner-with-us-form";
 
-export default function PartnerWithUs() {
+export default function PartnerWithUs({
+  services,
+}: {
+  services: ServiceType[];
+}) {
   return (
     <div className="flex overflow-hidden flex-col gap-10 items-center w-full py-5 md:py-15 bg-body sm:bg-none md:bg-none lg:bg-no-repeat">
       <div className="flex w-fit items-center gap-2 rounded-full border-2 border-blue px-2 py-1 font-bold uppercase md:px-4 md:py-1">
@@ -15,7 +20,7 @@ export default function PartnerWithUs() {
         </h1>
       </div>
 
-      <PartnerWithUsForm />
+      <PartnerWithUsForm services={services} />
     </div>
   );
 }

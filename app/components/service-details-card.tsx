@@ -1,15 +1,17 @@
 "use client";
-import { Service } from "@prisma/client";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ServiceType } from "../types/service";
 import ServiceForm from "./service-form";
 
 export default function ServiceDetailsCard({
   service,
+  services,
   sequence,
   onSetShowService,
 }: {
-  service: Service;
+  service: ServiceType;
+  services: ServiceType[];
   sequence: number;
   onSetShowService: (data: boolean) => void;
 }) {
@@ -32,7 +34,7 @@ export default function ServiceDetailsCard({
     <>
       {currentStep === 1 ? (
         <div id={service.slug} className="w-full">
-          <div className="relative w-[90%]  lg:min-w-4xl max-w-5xl mx-auto">
+          <div className="relative w-[90%] lg:min-w-4xl max-w-5xl mx-auto">
             <button
               onClick={handleClose}
               className="z-50 right-1 md:right-4 top-2 absolute text-gray-500 hover:text-gray-700 p-2"
@@ -58,7 +60,7 @@ export default function ServiceDetailsCard({
 
             {/* Card Content */}
             <div
-              className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl space-y-5 ${
+              className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl md:space-y-5 ${
                 sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
               }`}
             >
@@ -66,7 +68,7 @@ export default function ServiceDetailsCard({
               {currentStep === 1 && (
                 <>
                   <div
-                    className="prose prose-neutral max-w-none quill-preview"
+                    className="ProseMirror max-w-none"
                     dangerouslySetInnerHTML={{ __html: service.description }}
                   />
 
@@ -115,7 +117,7 @@ export default function ServiceDetailsCard({
               ✕
             </button>
           </div>
-          <ServiceForm serviceTag={service.slug} />
+          <ServiceForm serviceTag={service.slug} services={services} />
         </div>
       )}
     </>

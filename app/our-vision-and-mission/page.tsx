@@ -16,7 +16,7 @@ export default async function OurVisionAndMission() {
 
   return (
     <div className="mx-auto max-w-[1440px]">
-      <Navbar />
+      <Navbar services={services} />
       <Header title="Vision and Mission" />
       <OurVision />
       <FloatingWhatsapp whatsappNumber={about.whatsapp || ""} />

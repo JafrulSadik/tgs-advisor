@@ -16,7 +16,7 @@ export default async function WhoWeAre() {
 
   return (
     <div className="mx-auto max-w-[1440px]">
-      <Navbar />
+      <Navbar services={services} />
       <Header title="Who We Are" />
       <About />
       <FloatingWhatsapp whatsappNumber={about.whatsapp || ""} />

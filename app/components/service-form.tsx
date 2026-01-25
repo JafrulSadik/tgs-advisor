@@ -1,6 +1,14 @@
-import { serviceData } from "@/utils/service-data";
+import { ServiceType } from "../types/service";
 
-export default function ServiceForm({ serviceTag }: { serviceTag: string }) {
+type ServiceFormProps = {
+  serviceTag: string;
+  services: ServiceType[];
+};
+
+export default function ServiceForm({
+  serviceTag,
+  services,
+}: ServiceFormProps) {
   return (
     <form
       action=""
@@ -40,8 +48,8 @@ export default function ServiceForm({ serviceTag }: { serviceTag: string }) {
             defaultValue={serviceTag}
             className="w-full rounded-md bg-blue/20 p-3 text-sm md:text-base font-normal text-gray-700 outline-none md:rounded-lg md:p-4"
           >
-            {serviceData.map((service) => (
-              <option key={service.tag} value={service.tag}>
+            {services.map((service) => (
+              <option key={service.slug} value={service.slug}>
                 {service.title}
               </option>
             ))}

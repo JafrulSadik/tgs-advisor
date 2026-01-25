@@ -2,7 +2,7 @@
 
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical, Loader2, Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { CSSProperties } from "react";
 import { GalleryImage } from "./gallery-board";
@@ -20,13 +20,13 @@ type SortableCardProps = {
 export default function SortableCard({
   image,
   deleting,
-  isActive,
+  // isActive,
   setShowDeleteModal,
   setSelectedImage,
 }: SortableCardProps) {
   const {
-    attributes,
-    listeners,
+    // attributes,
+    // listeners,
     setNodeRef,
     transform,
     transition,
@@ -57,7 +57,7 @@ export default function SortableCard({
           }`}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
-        <button
+        {/* <button
           type="button"
           {...listeners}
           {...attributes}
@@ -68,7 +68,7 @@ export default function SortableCard({
           }`}
         >
           <GripVertical className="h-4 w-4" /> Drag
-        </button>
+        </button> */}
       </div>
 
       <div className="flex flex-1 flex-col justify-between gap-4 p-4">

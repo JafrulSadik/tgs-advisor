@@ -1,17 +1,23 @@
 "use client";
 
-import { Service } from "@prisma/client";
 import { useState } from "react";
+import { ServiceType } from "../types/service";
 import Hexagon from "./hexagon";
 import ServiceDetailsCard from "./service-details-card";
 
 type ServiceCardProps = {
   id: number;
   align: "left" | "right";
-  service: Service;
+  service: ServiceType;
+  services: ServiceType[];
 };
 
-export default function ServiceCard({ id, align, service }: ServiceCardProps) {
+export default function ServiceCard({
+  id,
+  align,
+  service,
+  services,
+}: ServiceCardProps) {
   const [showService, setShowService] = useState(false);
 
   const onSetShowService = (data: boolean) => {
@@ -59,11 +65,12 @@ export default function ServiceCard({ id, align, service }: ServiceCardProps) {
       {showService && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-blue/40 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-blue/40 backdrop-blur-sm overflow-y-auto py-20 md:py-0"
         >
           <ServiceDetailsCard
             service={service}
             sequence={id}
+            services={services}
             onSetShowService={onSetShowService}
           />
         </div>

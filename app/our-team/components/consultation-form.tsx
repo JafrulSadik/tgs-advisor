@@ -1,6 +1,10 @@
-import { serviceData } from "@/utils/service-data";
+import { ServiceType } from "@/app/types/service";
 
-export default function ConsultationForm() {
+export default function ConsultationForm({
+  services,
+}: {
+  services: ServiceType[];
+}) {
   return (
     <form action="" className="flex w-full justify-center my-10 ">
       <div className="grid w-[90%] max-w-5xl grid-cols-12 md:grid-rows-6 gap-4">
@@ -34,8 +38,8 @@ export default function ConsultationForm() {
         </div>
         <div className="col-span-12 row-span-1">
           <select className="w-full rounded-md bg-blue/20 p-3 font-normal text-gray-700 outline-none md:rounded-lg md:p-4">
-            {serviceData.map((service) => (
-              <option key={service.tag} value={service.tag}>
+            {services.map((service) => (
+              <option key={service.slug} value={service.slug}>
                 {service.title}
               </option>
             ))}

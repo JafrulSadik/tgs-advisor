@@ -55,8 +55,10 @@ const sidebarItems = [
 ];
 
 export function AdminSidebar() {
-  const { removeAuth } = useAuth();
+  const { removeAuth, user } = useAuth();
   const pathname = usePathname();
+
+  if (!user) return null;
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-600 bg-blue-950">
@@ -125,9 +127,7 @@ export function AdminSidebar() {
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-medium text-white">Admin</span>
-              <span className="text-xs text-gray-300">
-                admin@tgsadvisor.com
-              </span>
+              <span className="text-xs text-gray-300">{user?.email || ""}</span>
             </div>
           </div>
         </div>

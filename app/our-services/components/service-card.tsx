@@ -76,7 +76,7 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
         </div> */}
 
         <div
-          className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl ${
+          className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl ProseMirror ${
             sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
           }`}
           dangerouslySetInnerHTML={{ __html: description }}

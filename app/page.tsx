@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-[1440px]">
-      <Navbar />
+      <Navbar services={services} />
       <Hero />
       <WhatWeDo />
       <CoreServices services={services} />
@@ -41,7 +41,7 @@ export default async function Home() {
       <GallerySection />
       <WhyChooseUs />
       <FaqSection />
-      <PartnerWithUs />
+      <PartnerWithUs services={services} />
       <AwardsAndCertificates certificates={certificates} />
       <FloatingWhatsapp whatsappNumber={about.whatsapp || ""} />
       <Footer about={about} services={services} />

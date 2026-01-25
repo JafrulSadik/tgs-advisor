@@ -17,10 +17,10 @@ export default async function OurTeam() {
 
   return (
     <div className="mx-auto max-w-[1440px]">
-      <Navbar />
+      <Navbar services={services} />
       <Header title="Our Team" />
       <IndustrySpecialist />
-      <WorkWithOurExparts />
+      <WorkWithOurExparts services={services} />
       <FloatingWhatsapp whatsappNumber={about.whatsapp || ""} />
       <Footer about={about} services={services} />
     </div>

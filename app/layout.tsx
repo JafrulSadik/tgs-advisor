@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
-import "react-quill-new/dist/quill.snow.css";
-
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
