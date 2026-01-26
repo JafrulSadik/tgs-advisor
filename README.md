@@ -40,7 +40,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Run this command when deploying
 
 npx prisma generate
+
 npx prisma migrate deploy
+
 npm run seed
 
 
