@@ -16,6 +16,8 @@ import PartnerWithUs from "./components/partner-with-us";
 import WhatWeDo from "./components/what-we-do";
 import WhyChooseUs from "./components/why-choose-us";
 
+export const runtime = "nodejs";
+
 export default async function Home() {
   const { data: about } = await getAbout();
   const { data: certificates } = await getCertifications();

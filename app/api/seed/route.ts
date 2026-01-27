@@ -21,6 +21,7 @@ export async function GET() {
         facebook: "https://facebook.com/tgsadvisor",
         linkedin: "https://linkedin.com/tgsadvisor",
         youtube: "https://youtube.com/tgsadvisor",
+        instagram: "https://instagram.com/tgsadvisor",
       },
     });
 
@@ -38,13 +39,13 @@ export async function GET() {
 
     return NextResponse.json(
       { message: "Database seeded successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
       { error: "Failed to seed database" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

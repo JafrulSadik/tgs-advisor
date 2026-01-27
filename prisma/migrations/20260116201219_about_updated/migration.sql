@@ -1,2 +1,2 @@
 -- AlterTable
-ALTER TABLE `about` MODIFY `email` VARCHAR(191) NULL;
+ALTER TABLE `About` MODIFY `email` VARCHAR(191) NULL;
