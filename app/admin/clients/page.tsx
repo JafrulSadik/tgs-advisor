@@ -25,9 +25,7 @@ export default async function ClientsPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Our Clients</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Manage your clients list
-          </p>
+          <p className="mt-1 text-sm text-gray-600">Manage your clients list</p>
         </div>
         <Link
           href="/admin/clients/create"

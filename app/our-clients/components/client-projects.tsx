@@ -67,7 +67,6 @@ type ClientProjectsProps = {
 };
 
 export default function ClientProjects({ clients }: ClientProjectsProps) {
-  console.log({ clients });
   return (
     <div className="bg-blue-50 min-h-screen p-4 lg:p-6">
       <div className="mx-auto max-w-6xl columns-1 sm:columns-2 lg:columns-2 gap-6 my-5 lg:my-10 space-y-6">

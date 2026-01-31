@@ -6,7 +6,6 @@ import clsx from "clsx";
 import {
   Award,
   Briefcase,
-  Building2,
   Image as ImageIcon,
   Info,
   LayoutDashboard,
@@ -27,11 +26,6 @@ const sidebarItems = [
     label: "Services",
     href: "/admin/services",
     icon: Briefcase,
-  },
-  {
-    label: "Our Clients",
-    href: "/admin/clients",
-    icon: Building2,
   },
   {
     label: "Team Members",
