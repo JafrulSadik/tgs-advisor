@@ -98,7 +98,7 @@ export type AboutUpdateInput = z.infer<typeof aboutUpdateSchema>;
 // Certification Schemas
 export const certificationCreateSchema = z.object({
   title: z.string().min(1, "Title is required"),
-  image: z.string().min(1, "Image filename is required"),
+  image: z.string().optional().or(z.literal("")),
 });
 
 export const certificationUpdateSchema = certificationCreateSchema.partial();
