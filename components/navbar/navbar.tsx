@@ -22,7 +22,7 @@ const menuItems = (services: ServiceType[]) => [
     })),
   },
   { title: "Our Team", link: "/our-team" },
-  { title: "Gallery", link: "/gallery" },
+  { title: "Our Clients", link: "/our-clients" },
   { title: "Download", link: "/download" },
 ];
 

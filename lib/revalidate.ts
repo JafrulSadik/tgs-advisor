@@ -10,6 +10,7 @@ const PUBLIC_ROUTES = [
   "/our-team",
   "/our-vision-and-mission",
   "/who-we-are",
+  "/our-clients",
 ];
 
 export async function revalidatePublicPages(...extraPaths: string[]) {

@@ -6,6 +6,7 @@ import clsx from "clsx";
 import {
   Award,
   Briefcase,
+  Building2,
   Image as ImageIcon,
   Info,
   LayoutDashboard,
@@ -26,6 +27,11 @@ const sidebarItems = [
     label: "Services",
     href: "/admin/services",
     icon: Briefcase,
+  },
+  {
+    label: "Our Clients",
+    href: "/admin/clients",
+    icon: Building2,
   },
   {
     label: "Team Members",
@@ -58,7 +64,11 @@ export function AdminSidebar() {
   const { removeAuth, user } = useAuth();
   const pathname = usePathname();
 
-  if (!user) return null;
+  if (!user) {
+    return (
+      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-600 bg-blue-950" />
+    );
+  }
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-600 bg-blue-950">

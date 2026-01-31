@@ -122,3 +122,13 @@ export const testimonialUpdateSchema = testimonialCreateSchema.partial();
 
 export type TestimonialCreateInput = z.infer<typeof testimonialCreateSchema>;
 export type TestimonialUpdateInput = z.infer<typeof testimonialUpdateSchema>;
+
+export const clientCreateSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Description is required"),
+});
+
+export const clientUpdateSchema = clientCreateSchema.partial();
+
+export type ClientCreateInput = z.infer<typeof clientCreateSchema>;
+export type ClientUpdateInput = z.infer<typeof clientUpdateSchema>;
