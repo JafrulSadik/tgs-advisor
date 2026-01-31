@@ -2,6 +2,7 @@
 
 import { galleryLimit } from "@/config/config";
 import prisma from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import {
   GalleryImageCreateInput,
   galleryImageCreateSchema,
@@ -44,6 +45,7 @@ export async function createGalleryImage(data: GalleryImageCreateInput) {
     });
 
     revalidatePath("/admin/gallery");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to create gallery image", error);
@@ -67,6 +69,7 @@ export async function deleteGalleryImage(id: number) {
     ]);
 
     revalidatePath("/admin/gallery");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to delete gallery image", error);
@@ -86,11 +89,12 @@ export async function updateGalleryOrder(order: GalleryImageOrderInput) {
         prisma.imageGallery.update({
           where: { id },
           data: { sequence },
-        })
-      )
+        }),
+      ),
     );
 
     revalidatePath("/admin/gallery");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to update gallery order", error);

@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import {
   CertificationCreateInput,
   certificationCreateSchema,
@@ -53,6 +54,7 @@ export async function createCertification(data: CertificationCreateInput) {
     });
 
     revalidatePath(CERTIFICATES_PATH);
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to create certification:", error);
@@ -80,6 +82,7 @@ export async function updateCertification(
     });
 
     revalidatePath(CERTIFICATES_PATH);
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to update certification:", error);
@@ -94,6 +97,7 @@ export async function deleteCertification(id: number) {
     });
 
     revalidatePath(CERTIFICATES_PATH);
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to delete certification:", error);

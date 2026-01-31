@@ -2,8 +2,15 @@ import { getAbout } from "@/app/actions/about-action";
 import AboutDetailsForm from "./components/about-details-form";
 
 export default async function AboutPage() {
-  const aboutRes = await getAbout();
-  const about = "data" in aboutRes ? aboutRes.data ?? undefined : undefined;
+  const { data: about } = await getAbout();
+
+  if (!about) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        Failed to fetch about data.
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 space-y-6">

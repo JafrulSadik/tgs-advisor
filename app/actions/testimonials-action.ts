@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import {
   testimonialCreateSchema,
   testimonialUpdateSchema,
@@ -22,6 +23,7 @@ export async function createTestimonial(data: TestimonialCreateInput) {
     });
 
     revalidatePath("/admin/testimonials");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Error creating testimonial:", error);
@@ -31,7 +33,7 @@ export async function createTestimonial(data: TestimonialCreateInput) {
 
 export async function updateTestimonial(
   id: number,
-  data: TestimonialUpdateInput
+  data: TestimonialUpdateInput,
 ) {
   const parsed = testimonialUpdateSchema.safeParse(data);
 
@@ -46,6 +48,7 @@ export async function updateTestimonial(
     });
 
     revalidatePath("/admin/testimonials");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to update testimonial:", error);
@@ -57,6 +60,7 @@ export async function deleteTestimonial(id: number) {
   try {
     await prisma.testimonial.delete({ where: { id } });
     revalidatePath("/admin/testimonials");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to delete testimonial:", error);

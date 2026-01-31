@@ -33,7 +33,7 @@ export default function ServiceDetailsCard({
   return (
     <>
       {currentStep === 1 ? (
-        <div id={service.slug} className="w-full">
+        <div id={service.slug} className="w-full ">
           <div className="relative w-[90%] lg:min-w-4xl max-w-5xl mx-auto">
             <button
               onClick={handleClose}
@@ -50,7 +50,7 @@ export default function ServiceDetailsCard({
               >
                 {service.title}
                 <span
-                  className={`z-10 absolute -left-5 top-0 w-0 h-0 
+                  className={`z-10 absolute -left-5 top-1 md:top-0 w-0 h-0 
               border-t-20 border-t-transparent
               border-b-0 border-b-transparent
               border-r-20 border-r-[#0078A6]`}
@@ -60,7 +60,7 @@ export default function ServiceDetailsCard({
 
             {/* Card Content */}
             <div
-              className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl md:space-y-5 ${
+              className={`z-20 max-h-[80vh] overflow-y-auto relative pt-8 lg:pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl md:space-y-5 ${
                 sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
               }`}
             >

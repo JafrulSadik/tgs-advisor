@@ -1,6 +1,6 @@
 "use client";
 
-import { upsertAbout } from "@/app/actions/about-action";
+import { updateAbout } from "@/app/actions/about-action";
 import { AboutUpdateInput } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Save } from "lucide-react";
@@ -46,7 +46,7 @@ export default function AboutDetailsForm({
   });
 
   const onSubmit = async (data: AboutUpdateInput) => {
-    const result = await upsertAbout(data);
+    const result = await updateAbout(data);
     if (result.success) {
       router.refresh();
     }

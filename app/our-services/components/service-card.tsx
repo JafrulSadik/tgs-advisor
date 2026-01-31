@@ -1,6 +1,7 @@
 "use client";
 import { ServiceType } from "@/app/types/service";
 import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import ServiceForm from "./service-form";
 
 type ServiceCardProps = {
@@ -17,7 +18,7 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
     <div id={service.slug} className="pt-20">
       <div className="relative max-w-5xl mx-auto">
         {/* Title badge */}
-        <div className="absolute w-[80%] lg:min-w-[35%] md:w-auto -top-[4.5%] md:-top-[4%] right-1/2 translate-x-1/2 lg:-translate-x-2/20 z-30">
+        <div className="absolute w-[80%] lg:min-w-[35%] md:w-auto -top-[2.5%] md:-top-[4%] right-1/2 translate-x-1/2 lg:-translate-x-2/20 z-30">
           <div
             className={`relative text-white flex items-center font-semibold px-4 h-14 text-xs md:text-base lg:px-6  rounded-b-xl ${
               sequence % 2 === 0 ? "bg-[#00AEEF]" : "bg-[#17479E]"
@@ -33,29 +34,15 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
           </div>
         </div>
 
-        {/* Card */}
-        {/* <div
-          className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl space-y-5 ${
+        <div
+          className={`z-20 relative pt-10 md:pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl  ${
             sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
           }`}
         >
-          <p className="text-sm md:text-base">{service.description}</p>
-
-          <div className="text-sm md:text-base">
-            <h4 className="font-bold mb-3">{service.pointsTitle}</h4>
-            <ul className="space-y-2">
-              {service.points.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 size-1.5 bg-black rounded-full" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="text-sm md:text-base">
-            <span className="font-semibold">Outcome:</span> {service.outcome}
-          </p>
+          <div
+            className={`ProseMirror`}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
 
           <div className="flex justify-center md:justify-end">
             <button
@@ -67,20 +54,15 @@ export default function ServiceCard({ service, sequence }: ServiceCardProps) {
             : "bg-linear-to-t from-[#2971F4] to-[#154191] hover:from-[#154191] hover:to-[#2971F4]"
         } transition-colors duration-500`}
             >
-              <span className="ml-2 text-xs md:text-sm">{service.button}</span>
+              <span className="ml-2 text-xs md:text-sm">
+                Request Consultation
+              </span>
               <span className="bg-white p-1 rounded-full">
                 <FaArrowRight className="text-[#006489] -rotate-35" />
               </span>
             </button>
           </div>
-        </div> */}
-
-        <div
-          className={`z-20 relative pt-14 px-5 md:px-10 pb-8 rounded-xl md:rounded-3xl ProseMirror ${
-            sequence % 2 === 0 ? "bg-[#D9EFF8]" : "bg-[#CBDCFD]"
-          }`}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+        </div>
       </div>
 
       {/* Fullscreen Form Modal */}

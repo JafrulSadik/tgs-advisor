@@ -2,13 +2,6 @@ import { getTeamMembers } from "@/app/actions/team-action";
 import Hand from "@/public/images/our-team/hand.svg";
 import Image from "next/image";
 
-// import CEO from "@/public/images/our-team/ceo.png";
-// import Hr from "@/public/images/our-team/hr.png";
-// import ManagingDirector from "@/public/images/our-team/managing-director.png";
-// import MCMI from "@/public/images/our-team/mcmi.png";
-// import PlanningHead from "@/public/images/our-team/planning-head.png";
-// import TechnicalSpecialist from "@/public/images/our-team/technical-specialist.png";
-
 export default async function IndustrySpecialist() {
   const { data: teamMembers } = await getTeamMembers();
 
@@ -30,7 +23,7 @@ export default async function IndustrySpecialist() {
       </div>
 
       <div className="flex justify-center">
-        <div className="relative z-20 py-2 md:py-3 px-3 md:px-14 w-auto bg-blue rounded-2xl md:rounded-3xl my-10 flex justify-center">
+        <div className="relative z-20 py-2 md:py-3 px-3 md:px-14 w-auto bg-blue mx-4 rounded-2xl md:rounded-3xl my-10 flex justify-center">
           <h2 className="text-white text-center font-semibold text-xl md:text-2xl">
             Some of Our Key Specialist
           </h2>
@@ -39,7 +32,10 @@ export default async function IndustrySpecialist() {
 
       <div className="space-y-10 md:space-y-15 w-[90%] max-w-6xl mx-auto md:my-10">
         {teamMembers?.map((member) => (
-          <div className="flex gap-6 items-start" key={member.id}>
+          <div
+            className="flex flex-col md:flex-row gap-6 items-center md:items-start"
+            key={member.id}
+          >
             <div className="w-40 shrink-0">
               <Image
                 src={member.image || ""}
@@ -50,26 +46,35 @@ export default async function IndustrySpecialist() {
               />
             </div>
 
-            <div className="space-y-1 mb-5 flex-1 min-w-0">
-              <h2 className="text-xl md:text-2xl font-bold tracking-wide">
-                {member.name}
-              </h2>
+            <div className="flex-1 min-w-0">
+              <div className="pl-2">
+                <h2 className="text-xl md:text-2xl font-bold tracking-wide">
+                  {member.name}
+                </h2>
 
-              <p className="font-bold tracking-wide">
-                {member.designation}, {member.company}.
-              </p>
+                <p className="font-bold tracking-wide">
+                  {member.designation}, {member.company}.
+                </p>
 
-              {member.education && <p>{member.education}</p>}
-              {member.specialization && <p>{member.specialization}</p>}
-
-              <div className="space-y-1 mb-5 flex-1 min-w-0">
-                <div
-                  className="prose prose-neutral max-w-none quill-preview"
-                  dangerouslySetInnerHTML={{
-                    __html: member?.description ?? "",
-                  }}
-                />
+                {member.education && (
+                  <p className="font-semibold tracking-wide">
+                    {member.education}
+                  </p>
+                )}
+                {member.specialization && (
+                  <p className="font-semibold tracking-wide">
+                    {member.specialization}
+                  </p>
+                )}
               </div>
+
+              <div
+                className="ProseMirror"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    member?.description?.replace(/<p><\/p>/g, "<br/>") ?? "",
+                }}
+              />
             </div>
           </div>
         ))}

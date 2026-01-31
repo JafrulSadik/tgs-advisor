@@ -27,7 +27,7 @@ export default function ServiceCard({
   return (
     <div
       onClick={() => onSetShowService(true)}
-      className={`col-span-2 md:col-span-1  relative h-20 md:h-24 flex items-center ${
+      className={`col-span-2 md:col-span-1  relative h-20 md:h-24 flex items-center  ${
         align === "right" ? "justify-end" : "justify-start"
       }`}
     >

@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import { ServiceCreateInput, serviceCreateSchema } from "@/lib/schemas";
 import { revalidatePath } from "next/cache";
 
@@ -36,6 +37,7 @@ export async function createService(data: ServiceCreateInput) {
     });
 
     revalidatePath("/admin/services");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to create service:", error);
@@ -68,6 +70,7 @@ export async function updateService(id: number, data: ServiceCreateInput) {
     });
 
     revalidatePath("/admin/services");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to update service:", error);
@@ -77,9 +80,8 @@ export async function updateService(id: number, data: ServiceCreateInput) {
 
 export async function getServices() {
   try {
-    const services = await prisma.service.findMany({
-      orderBy: { createdAt: "desc" },
-    });
+    const services = await prisma.service.findMany();
+
     return { success: true, data: services };
   } catch (error) {
     console.error("Failed to fetch services:", error);
@@ -105,6 +107,7 @@ export async function deleteService(id: number) {
       where: { id },
     });
     revalidatePath("/admin/services");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to delete service:", error);

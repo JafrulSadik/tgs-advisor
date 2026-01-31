@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import {
   TeamCreateInput,
   teamCreateSchema,
@@ -40,6 +41,7 @@ export async function createTeamMember(data: TeamCreateInput) {
     });
 
     revalidatePath("/admin/team-members");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Error creating service:", error);
@@ -80,6 +82,7 @@ export async function updateTeamMember(id: number, data: TeamUpdateInput) {
     });
 
     revalidatePath("/admin/team-members");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to update service:", error);
@@ -93,6 +96,7 @@ export async function deleteTeamMember(id: number) {
       where: { id },
     });
     revalidatePath("/admin/team-members");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to delete team:", error);

@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicPages } from "@/lib/revalidate";
 import { AboutUpdateInput, aboutUpdateSchema } from "@/lib/schemas";
 import { revalidatePath } from "next/cache";
 
@@ -14,7 +15,7 @@ export async function getAbout() {
   }
 }
 
-export async function upsertAbout(data: AboutUpdateInput) {
+export async function updateAbout(data: AboutUpdateInput) {
   const result = aboutUpdateSchema.safeParse(data);
 
   if (!result.success) {
@@ -39,6 +40,7 @@ export async function upsertAbout(data: AboutUpdateInput) {
     }
 
     revalidatePath("/admin/about");
+    await revalidatePublicPages();
     return { success: true };
   } catch (error) {
     console.error("Failed to upsert about data:", error);
