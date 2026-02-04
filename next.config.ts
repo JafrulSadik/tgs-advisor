@@ -1,9 +1,29 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["localhost", "www.fijenazisyz.info"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tgsadvisor.com",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.tgsadvisor.com",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "tgsadvisor.com",
+        pathname: "",
+      },
+      {
+        protocol: "https",
+        hostname: "www.tgsadvisor.com",
+        pathname: "",
+      },
+    ],
   },
 };
 

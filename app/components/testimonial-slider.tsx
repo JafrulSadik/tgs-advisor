@@ -9,33 +9,6 @@ import { useMediaQuery } from "usehooks-ts";
 import { TestimonialType } from "../types/testimonial";
 import { PinMaskedImage } from "./pin-mask-image";
 
-// const testimonials = [
-//   {
-//     id: 1,
-//     text: "TGS Advisors, led by Mr Abdul Hadi, have been crucial in getting our struggling company back on track again.",
-//     name: "Ms Ishra Tahiyat",
-//     designation: "Managing Director",
-//     company: "Farnoor Garments Ltd",
-//     profile: ManagingDirector,
-//   },
-//   {
-//     id: 2,
-//     text: "TGS Advisor boosts employee morale with counseling, wellness programs and performance based motivation.",
-//     name: "Alamzeb Radin Ahmed",
-//     designation: "Managing Director",
-//     company: "Farnoor Garments Ltd",
-//     profile: Director,
-//   },
-//   {
-//     id: 3,
-//     text: "The most impactful change was in our people through motivational counseling and an effective incentive system.",
-//     name: "Tanvir Ahmed",
-//     designation: "Chief Operation Officer (COO)",
-//     company: "Leadtime Apparels Ltd",
-//     profile: ChiefOfficer,
-//   },
-// ];
-
 export default function TestimonialSlider({
   testimonials,
 }: {
