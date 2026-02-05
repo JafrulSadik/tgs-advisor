@@ -35,14 +35,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
+## While there is new package,
+1. Remove the node_modules
+2. ⁠remove package-lock.json
+3. ⁠npm install
+4. ⁠npx Prisma generate
+5. ⁠npm run build
+6. ⁠restart the server.
 
 ## Run this command when deploying
 
-npx prisma migrate deploy
-
 npx prisma generate
-
-npm run seed
 
 
