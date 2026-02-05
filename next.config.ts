@@ -6,22 +6,26 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "tgsadvisor.com",
-        pathname: "/uploads/**",
       },
       {
         protocol: "https",
         hostname: "www.tgsadvisor.com",
-        pathname: "/uploads/**",
       },
       {
         protocol: "https",
         hostname: "tgsadvisor.com",
-        pathname: "",
       },
       {
         protocol: "https",
         hostname: "www.tgsadvisor.com",
-        pathname: "",
+      },
+      {
+        protocol: "https",
+        hostname: "loclhost",
+      },
+      {
+        protocol: "http",
+        hostname: "loclhost",
       },
     ],
   },
