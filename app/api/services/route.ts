@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { serviceCreateSchema } from "@/lib/schemas";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -12,12 +12,12 @@ export async function GET() {
     console.error("Error fetching services:", error);
     return NextResponse.json(
       { error: "Failed to fetch services" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const result = serviceCreateSchema.safeParse(body);
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
           error: "Invalid input",
           details: result.error.flatten(),
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     if (existingService) {
       return NextResponse.json(
         { error: "A service with this title already exists." },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     console.error("Error creating service:", error);
     return NextResponse.json(
       { error: "Failed to create service" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

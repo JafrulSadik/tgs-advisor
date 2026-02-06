@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { userCreateSchema } from "@/lib/schemas";
 import bcrypt from "bcryptjs";
 import Error from "next/error";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -22,12 +22,12 @@ export async function GET() {
     console.error("Error fetching users:", error);
     return NextResponse.json(
       { error: "Failed to fetch users" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const result = userCreateSchema.safeParse(body);
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
           error: "Invalid input",
           details: result.error.message,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
           error: "User with this email already exists",
           details: result.error,
         },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -84,7 +84,7 @@ export async function POST(request: Request) {
         error: "Failed to create user",
         details: error.context,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { getImageUrl } from "@/lib/image-url";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { GalleryImageType } from "../gallery/components/image-grid";
@@ -41,7 +42,7 @@ export default function MobileImageSlider({
           >
             <div className="relative w-full h-full">
               <Image
-                src={src.image}
+                src={getImageUrl(src.image)}
                 alt=""
                 width={500}
                 height={500}

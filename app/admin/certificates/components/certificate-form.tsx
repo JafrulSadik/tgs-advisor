@@ -4,6 +4,7 @@ import {
   createCertification,
   updateCertification,
 } from "@/app/actions/certification-action";
+import { getImageUrl } from "@/lib/image-url";
 import {
   certificationCreateSchema,
   type CertificationCreateInput,
@@ -196,7 +197,7 @@ export function CertificateForm({ certificate }: CertificateFormProps) {
           {previewUrl || initialImage ? (
             <>
               <Image
-                src={previewUrl || initialImage}
+                src={getImageUrl(previewUrl || initialImage)}
                 alt="Certificate preview"
                 width={260}
                 height={200}

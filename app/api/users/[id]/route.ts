@@ -1,14 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import { userUpdateSchema } from "@/lib/schemas";
 import bcrypt from "bcryptjs";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const userId = parseInt(id);
 
     if (isNaN(userId)) {
@@ -35,17 +35,17 @@ export async function GET(
     console.error("Error fetching user:", error);
     return NextResponse.json(
       { error: "Failed to fetch user" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PUT(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const userId = parseInt(id);
 
     if (isNaN(userId)) {
@@ -58,7 +58,7 @@ export async function PUT(
     if (!result.success) {
       return NextResponse.json(
         { error: "Invalid input", details: result.error.message },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -84,7 +84,7 @@ export async function PUT(
             error: "Email already in use",
             details: result.error,
           },
-          { status: 409 }
+          { status: 409 },
         );
       }
     }
@@ -111,17 +111,17 @@ export async function PUT(
     console.error("Error updating user:", error);
     return NextResponse.json(
       { error: "Failed to update user" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const userId = parseInt(id);
 
     if (isNaN(userId)) {
@@ -145,7 +145,7 @@ export async function DELETE(
     console.error("Error deleting user:", error);
     return NextResponse.json(
       { error: "Failed to delete user" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

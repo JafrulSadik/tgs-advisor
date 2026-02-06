@@ -3,6 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
+import { getImageUrl } from "@/lib/image-url";
 import { Appostrophi } from "@/public/images/homepage";
 import Autoplay from "embla-carousel-autoplay";
 import { useMediaQuery } from "usehooks-ts";
@@ -57,7 +58,7 @@ export default function TestimonialSlider({
 
               <div className="flex  md:flex-col justify-center items-center gap-2 ">
                 <div className="relative size-14 md:size-18 bg-transparent flex items-center justify-center">
-                  <PinMaskedImage src={testimonial.clientImage || ""} />
+                  <PinMaskedImage src={getImageUrl(testimonial.clientImage)} />
                 </div>
                 <div className="flex  flex-col justify-center md:items-center text-white text-sm lg:text-base">
                   <h4 className="font-semibold">{testimonial.clientName}</h4>

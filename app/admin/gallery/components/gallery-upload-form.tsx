@@ -1,6 +1,7 @@
 "use client";
 
 import { createGalleryImage } from "@/app/actions/gallery-action";
+import { getImageUrl } from "@/lib/image-url";
 import { Loader2, Upload, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -56,7 +57,7 @@ export function GalleryUploadForm({
   };
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const file = event.target.files?.[0];
     setError(null);
@@ -167,7 +168,7 @@ export function GalleryUploadForm({
           {previewUrl ? (
             <>
               <Image
-                src={previewUrl}
+                src={getImageUrl(previewUrl)}
                 alt="Preview"
                 width={480}
                 height={320}

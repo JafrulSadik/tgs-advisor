@@ -1,6 +1,7 @@
 "use client";
 
 import { createTeamMember, updateTeamMember } from "@/app/actions/team-action";
+import { getImageUrl } from "@/lib/image-url";
 import { teamCreateSchema, type TeamCreateInput } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ImageIcon, Loader2, X } from "lucide-react";
@@ -271,7 +272,7 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
           {previewUrl || initialImage ? (
             <>
               <Image
-                src={previewUrl || initialImage}
+                src={getImageUrl(previewUrl || initialImage)}
                 alt="Profile preview"
                 width={240}
                 height={240}

@@ -1,4 +1,5 @@
 import { getCertifications } from "@/app/actions/certification-action";
+import { getImageUrl } from "@/lib/image-url";
 import { ImageIcon, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -84,7 +85,7 @@ export default async function CertificatesPage() {
                     <td className="px-6 py-4">
                       {item.image ? (
                         <Image
-                          src={item.image || "/placeholder.svg"}
+                          src={getImageUrl(item.image) || "/placeholder.svg"}
                           alt={item.title}
                           width={40}
                           height={40}

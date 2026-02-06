@@ -1,5 +1,6 @@
 "use client";
 
+import { getImageUrl } from "@/lib/image-url";
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect } from "react";
 import { GalleryImageType } from "../gallery/components/image-grid";
@@ -23,20 +24,6 @@ function normalizeImages(images: GalleryImageType[]) {
 
   return result;
 }
-
-// const images = [
-//   "/images/gallery-home/home-gallery-1.png",
-//   "/images/gallery-home/home-gallery-2.png",
-//   "/images/gallery-home/home-gallery-3.png",
-//   "/images/gallery-home/home-gallery-4.png",
-// ];
-
-// const bottomImages = [
-//   "/images/gallery-home/home-gallery-5.png",
-//   "/images/gallery-home/home-gallery-6.png",
-//   "/images/gallery-home/home-gallery-7.png",
-//   "/images/gallery-home/home-gallery-8.png",
-// ];
 
 const ITEM_WIDTH = 275;
 const GAP = 10;
@@ -75,7 +62,7 @@ export default function GallerySlideSection({
           style={{ x }}
         >
           {[...imagesUp, ...imagesUp].map((img, i) => (
-            <SliderItem key={i} src={img.image} index={i} x={x} />
+            <SliderItem key={i} src={getImageUrl(img.image)} index={i} x={x} />
           ))}
         </motion.div>
       )}
@@ -88,7 +75,12 @@ export default function GallerySlideSection({
           style={{ x }}
         >
           {[...imagesDown, ...imagesDown].map((img, i) => (
-            <SliderBottomItem key={i} src={img.image} index={i} x={x} />
+            <SliderBottomItem
+              key={i}
+              src={getImageUrl(img.image)}
+              index={i}
+              x={x}
+            />
           ))}
         </motion.div>
       )}

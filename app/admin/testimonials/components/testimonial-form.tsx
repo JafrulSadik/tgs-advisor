@@ -4,6 +4,7 @@ import {
   createTestimonial,
   updateTestimonial,
 } from "@/app/actions/testimonials-action";
+import { getImageUrl } from "@/lib/image-url";
 import {
   testimonialCreateSchema,
   type TestimonialCreateInput,
@@ -231,7 +232,7 @@ export function TestimonialForm({ testimonial }: TestimonialFormProps) {
           {previewUrl || initialImage ? (
             <>
               <Image
-                src={previewUrl || initialImage}
+                src={getImageUrl(previewUrl || initialImage)}
                 alt="Client preview"
                 width={240}
                 height={240}

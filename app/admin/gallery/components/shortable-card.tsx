@@ -1,5 +1,6 @@
 "use client";
 
+import { getImageUrl } from "@/lib/image-url";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Loader2, Trash2 } from "lucide-react";
@@ -49,7 +50,7 @@ export default function SortableCard({
     >
       <div className="relative aspect-6/3 w-full">
         <Image
-          src={image.image || "/placeholder.svg"}
+          src={getImageUrl(image.image) || "/placeholder.svg"}
           alt={image.name}
           fill
           className={`object-cover transition ${

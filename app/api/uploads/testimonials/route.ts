@@ -1,13 +1,13 @@
 import crypto from "crypto";
 import fs from "fs/promises";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const UPLOAD_DIR = path.join(
   process.cwd(),
-  "public",
+  "storage",
   "uploads",
   "testimonials",
 );
@@ -26,7 +26,7 @@ async function ensureUploadDir() {
   } catch {}
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     await ensureUploadDir();
     const formData = await request.formData();
@@ -66,14 +66,14 @@ export async function POST(request: Request) {
 
     await fs.writeFile(filePath, buffer);
 
-    const url = `/uploads/testimonials/${filename}`;
+    const url = `/api/uploads/testimonials/${filename}`;
     return NextResponse.json({ success: true, url, filename });
   } catch {
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request: NextRequest) {
   try {
     const urlObj = new URL(request.url);
     const filename = urlObj.searchParams.get("filename");

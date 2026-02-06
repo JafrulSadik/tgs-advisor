@@ -1,4 +1,5 @@
 import { getTestimonials } from "@/app/actions/testimonials-action";
+import { getImageUrl } from "@/lib/image-url";
 import { ImageIcon, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -95,7 +96,7 @@ export default async function TestimonialsPage() {
                       <div className="flex items-center gap-3">
                         {testimonial.clientImage ? (
                           <Image
-                            src={testimonial.clientImage}
+                            src={getImageUrl(testimonial.clientImage)}
                             alt={testimonial.clientName}
                             width={40}
                             height={40}

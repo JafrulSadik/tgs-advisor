@@ -1,4 +1,5 @@
 import { getTeamMembers } from "@/app/actions/team-action";
+import { getImageUrl } from "@/lib/image-url";
 import { ImageIcon, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -87,7 +88,9 @@ export default async function TeamPage() {
                     <td className="px-6 py-4">
                       {teamMember.image ? (
                         <Image
-                          src={teamMember.image || "/placeholder.svg"}
+                          src={
+                            getImageUrl(teamMember.image) || "/placeholder.svg"
+                          }
                           alt={teamMember.name}
                           width={40}
                           height={40}
