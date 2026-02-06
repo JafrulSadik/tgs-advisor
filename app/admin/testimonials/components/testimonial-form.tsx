@@ -226,7 +226,7 @@ export function TestimonialForm({ testimonial }: TestimonialFormProps) {
         </label>
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="relative flex min-h-[240px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 text-center transition hover:border-blue-500 hover:bg-blue-50"
+          className="relative flex min-h-60 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 text-center transition hover:border-blue-500 hover:bg-blue-50"
         >
           {previewUrl || initialImage ? (
             <>

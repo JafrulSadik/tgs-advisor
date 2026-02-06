@@ -12,20 +12,20 @@ const nextConfig: NextConfig = {
         hostname: "www.tgsadvisor.com",
       },
       {
-        protocol: "https",
+        protocol: "http",
         hostname: "tgsadvisor.com",
       },
       {
-        protocol: "https",
+        protocol: "http",
         hostname: "www.tgsadvisor.com",
       },
       {
         protocol: "https",
-        hostname: "loclhost",
+        hostname: "localhost",
       },
       {
         protocol: "http",
-        hostname: "loclhost",
+        hostname: "localhost",
       },
     ],
   },

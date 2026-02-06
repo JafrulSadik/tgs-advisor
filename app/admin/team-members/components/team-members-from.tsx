@@ -21,7 +21,7 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [initialImage, setInitialImage] = useState<string>(
-    teamMember?.image ?? ""
+    teamMember?.image ?? "",
   );
   const MAX_SIZE = 2 * 1024 * 1024;
 
@@ -69,7 +69,7 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
           ? `url=${encodeURIComponent(filenameOrUrl)}`
           : `filename=${encodeURIComponent(filenameOrUrl)}`
       }`,
-      window.location.origin
+      window.location.origin,
     );
     await fetch(url.toString(), { method: "DELETE" });
   };
@@ -265,7 +265,7 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
 
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="relative min-h-[240px] flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 text-center transition hover:border-blue-500 hover:bg-blue-50"
+          className="relative min-h-60 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 text-center transition hover:border-blue-500 hover:bg-blue-50"
         >
           {/* Preview */}
           {previewUrl || initialImage ? (
@@ -353,8 +353,8 @@ export function TeamMemberForm({ teamMember }: TeamMemberFormProps) {
               ? "Updating..."
               : "Update Team Member"
             : isSubmitting
-            ? "Creating..."
-            : "Add Team Member"}
+              ? "Creating..."
+              : "Add Team Member"}
         </button>
       </div>
     </form>
