@@ -11,6 +11,7 @@ import {
   LayoutDashboard,
   Quote,
   Users,
+  UsersIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,6 +42,11 @@ const sidebarItems = [
     label: "Testimonials",
     href: "/admin/testimonials",
     icon: Quote,
+  },
+  {
+    label: "Clients",
+    href: "/admin/clients",
+    icon: UsersIcon,
   },
   {
     label: "Awards and Certificates",
