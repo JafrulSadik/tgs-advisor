@@ -1,0 +1,8 @@
+[phases.setup]
+node_version = "22.21.0"
+
+[phases.build]
+command = "npm ci && npx prisma generate && npm run build"
+
+[phases.start]
+command = "npm run start"
