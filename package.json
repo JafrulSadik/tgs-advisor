@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate",
     "db:push": "prisma db push",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit",
+    "db:seed": "prisma db seed"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
